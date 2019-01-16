@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_160955) do
+ActiveRecord::Schema.define(version: 2019_01_16_194136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 2019_01_16_160955) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "coordinator", default: false, null: false
+    t.bigint "hospital_id"
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["hospital_id"], name: "index_admins_on_hospital_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
@@ -104,10 +107,19 @@ ActiveRecord::Schema.define(version: 2019_01_16_160955) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "family"
+    t.string "first_name"
+    t.string "family_member"
+    t.boolean "host", null: false
+    t.bigint "hospital_id"
+    t.bigint "code_id"
+    t.index ["code_id"], name: "index_users_on_code_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["hospital_id"], name: "index_users_on_hospital_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admins", "hospitals"
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
   add_foreign_key "flats", "users"
@@ -116,4 +128,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_160955) do
   add_foreign_key "photos", "flats"
   add_foreign_key "reviews", "flats"
   add_foreign_key "reviews", "users"
+  add_foreign_key "users", "codes"
+  add_foreign_key "users", "hospitals"
 end
