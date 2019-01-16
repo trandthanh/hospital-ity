@@ -10,25 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_194136) do
+ActiveRecord::Schema.define(version: 2019_01_16_201932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "coordinator", default: false, null: false
-    t.bigint "hospital_id"
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["hospital_id"], name: "index_admins_on_hospital_id"
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
 
   create_table "bookings", force: :cascade do |t|
     t.date "arrival"
@@ -110,16 +95,17 @@ ActiveRecord::Schema.define(version: 2019_01_16_194136) do
     t.string "family"
     t.string "first_name"
     t.string "family_member"
-    t.boolean "host", null: false
+    t.boolean "host", default: false, null: false
     t.bigint "hospital_id"
     t.bigint "code_id"
+    t.boolean "hospital_admin", default: false, null: false
+    t.boolean "super_admin", default: false, null: false
     t.index ["code_id"], name: "index_users_on_code_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hospital_id"], name: "index_users_on_hospital_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "admins", "hospitals"
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
   add_foreign_key "flats", "users"
