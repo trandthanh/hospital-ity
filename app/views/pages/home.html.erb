@@ -1,5 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="search-banner" style="background-image: url(<%= asset_path 'banner.png' %>);">
+  <%= render 'shared/navbar' %>
+</div>
 
 
 <% if user_signed_in? %>
