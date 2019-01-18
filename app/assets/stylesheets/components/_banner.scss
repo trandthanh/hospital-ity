@@ -1,3 +1,36 @@
+.aliceblue-banner {
+  background-color: $alice-blue;
+}
+
+.feature-items {
+  display: flex;
+  justify-content: space-between;
+  h6 {
+    margin-top: 15px;
+  }
+}
+
+.feature-item {
+  padding: 0 20px;
+}
+
+.features {
+  border-top: 1px solid rgb(232, 232, 232);
+  padding: 80px 0;
+  margin: 0 50px;
+}
+
+.intro-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 150px;
+  flex-direction: column;
+  h3 {
+    margin-top: 40px;
+  }
+}
+
 .search-banner {
   display: flex;
   margin-top: 50px;

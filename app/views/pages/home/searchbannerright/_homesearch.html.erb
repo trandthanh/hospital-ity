@@ -1,0 +1,16 @@
+<%= simple_form_for :query, url: root_path, method: 'get' do |f| %>
+  <div class="home-search-input">
+    <div class="home-search-input-items">
+      <%= f.input :hospital, collection: @hospitals, as: :select, label: false, prompt: "Hôpital" %>
+    </div>
+    <div class="home-search-input-items">
+      <%= f.input :date, label: false, placeholder: "Arrivée" %>
+    </div>
+    <div class="home-search-input-items">
+      <%= f.input :capacity, as: :integer, label: false, placeholder: "Membres" %>
+    </div>
+  </div>
+  <div class="home-search-button">
+    <%= f.button :submit, value: 'Chercher' %>
+  </div>
+<% end %>

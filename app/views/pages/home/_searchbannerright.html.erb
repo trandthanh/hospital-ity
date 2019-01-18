@@ -1,26 +1,10 @@
 <div class="search-banner-right">
   <h1 class="h1-35px yankeesblue">Nous connaissons l'importance d'être proche des centres de traitements et de ceux que vous aimez.</h1>
-  <h5 class="regular opensans yankeesblue">Que vous soyez patients ou de la famille, nous vous proposons des solutions de logements abordables à proximité des hôpitaux et pendant toute la durée nécessaire du traitement.</h5>
 
   <div class="home-search">
     <p class="paleaqua light p-strip">Trouvez un logement</p>
     <div class="home-search-form">
-      <%= simple_form_for :query, url: root_path, method: 'get' do |f| %>
-        <div class="home-search-input">
-          <div class="home-search-input-items">
-            <%= f.input :hospital, collection: @hospitals, as: :select, label: false, prompt: "Hôpital" %>
-          </div>
-          <div class="home-search-input-items">
-            <%= f.input :date, label: false, placeholder: "Arrivée" %>
-          </div>
-          <div class="home-search-input-items">
-            <%= f.input :capacity, as: :integer, label: false, placeholder: "Membres" %>
-          </div>
-        </div>
-        <div class="home-search-button">
-          <%= f.button :submit, value: 'Chercher' %>
-        </div>
-      <% end %>
+      <%= render 'pages/home/searchbannerright/homesearch' %>
     </div>
   </div>
 </div>
