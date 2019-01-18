@@ -1,0 +1,8 @@
+.navbar-link {
+  color: $yankees-blue;
+  margin-right: 20px;
+  margin-top: 10px;
+  &:hover {
+    text-decoration: none;
+  }
+}

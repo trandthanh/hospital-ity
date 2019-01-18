@@ -1,0 +1,16 @@
+.search-banner {
+  display: flex;
+  margin-top: 50px;
+}
+
+.search-banner-left {
+  height: 75vh;
+  width: 50%;
+  background-size: contain;
+  background-position: center;
+  // background-image: asset-url('banner.png');
+}
+
+.search-banner-right {
+  width: 50%;
+}

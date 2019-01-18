@@ -1,17 +1,22 @@
 <div class="navbar navbar-hospitality py-3 px-4">
   <%= link_to root_path do %>
-    <%= image_tag "logowhite.png", class: "logo-medium" %>
+    <%= image_tag "logoblack.png", class: "logo-medium" %>
   <% end %>
   <div class="nav-bar-right d-flex align-items-center">
-    <%= link_to "Profile", "#", class: "px-3 d-none d-sm-block" %>
-    <%= link_to "Dashboard", "#", class: "px-3 d-none d-sm-block" %>
-    <%= link_to "Login", "#", class: "px-3 d-none d-sm-block" %>
+    <% if current_user.host == true %>
+      <%= link_to "Mes hébergements", "#", class: "px-3 d-none d-sm-block" %>
+    <% elsif current_user.hospital_admin == true %>
+      <%= link_to "Mes hébergeurs", "#", class: "px-3 d-none d-sm-block" %>
+    <% else %>
+      <%= link_to "#", class: "navbar-link" do %>
+        <h6 class="h6-strip">Mon séjour</h6>
+      <% end %>
+    <% end %>
     <div class="dropdown  d-none d-sm-block">
-      <%= image_tag "http://www.placehold.it/40x40", class: "rounded-circle px-3", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
+      <%= image_tag "wavy.png", class: "avatar", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <%= link_to "Action", "#", class: "dropdown-item" %>
-        <%= link_to "Another action", "#", class: "dropdown-item" %>
-        <%= link_to "Something else here", "#", class: "dropdown-item" %>
+        <%= link_to "Mon profile", "#", class: "dropdown-item" %>
+        <%= link_to "Déconnexion", "#", class: "dropdown-item" %>
       </div>
     </div>
   </div>
