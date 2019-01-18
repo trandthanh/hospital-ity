@@ -1,0 +1,51 @@
+.home-search {
+  margin-top: 30px;
+}
+
+.home-search-input {
+  display: flex;
+}
+
+.home-search-button {
+  width: 100%;
+  margin-top: 10px;
+  background-color: $baby-blue;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  input {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.home-search-input-items {
+  width: 33.33%;
+  border-radius: 2px;
+}
+
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+.form-control {
+  height: 50px;
+  font-family: "Open Sans";
+  font-weight: 300;
+  color: $yankees-blue !important;
+}
+
+
+input::-webkit-input-placeholder {
+  color: $yankees-blue !important;
+}

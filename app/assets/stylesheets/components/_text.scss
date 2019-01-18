@@ -1,0 +1,40 @@
+.light {
+  font-weight: 300;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.h1-35px {
+  font-size: 35px !important;
+}
+
+.opensans {
+  font-family: "Open Sans" !important;
+}
+
+.paleaqua {
+  color: $pale-aqua;
+}
+
+.yankeesblue {
+  color: $yankees-blue;
+}
+
+.h6-strip {
+  margin: 0;
+}
+
+.p-strip {
+  margin: 0;
+  margin-bottom: 5px;
+}

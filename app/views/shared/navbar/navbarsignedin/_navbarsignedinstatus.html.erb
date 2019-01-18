@@ -1,0 +1,9 @@
+<% if current_user.host == true %>
+  <%= link_to "Mes hébergements", "#", class: "px-3 d-none d-sm-block" %>
+<% elsif current_user.hospital_admin == true %>
+  <%= link_to "Mes hébergeurs", "#", class: "px-3 d-none d-sm-block" %>
+<% else %>
+  <%= link_to "#", class: "navbar-link" do %>
+    <h6 class="h6-strip">Mon séjour</h6>
+  <% end %>
+<% end %>
