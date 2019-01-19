@@ -1,0 +1,29 @@
+.footer {
+  padding: 50px 0;
+  border-top: 1px solid rgb(232, 232, 232);
+}
+
+.footer-upper {
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+
+.footer-column {
+  i {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+}
+
+.footer-lower {
+  border-top: 1px solid rgb(232, 232, 232);
+  margin-left: 150px;
+  margin-right: 150px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
