@@ -1,5 +1,5 @@
-<div class="search-banner">
-  <div class="search-banner-left" style="background-image: url(<%= asset_path 'banner.png' %>);">
+<div class="banner">
+  <div class="banner-image" style="background-image: url(<%= asset_path 'banner.png' %>);">
   </div>
   <%= render 'pages/home/searchbannerright' %>
 </div>
@@ -9,8 +9,7 @@
   <%= render 'pages/home/featuresbanner' %>
 </div>
 
+<div class="banner margin-bottom-50"> <!-- story -->
+  <%= render 'pages/home/storybanner' %>
+</div>
 
-
-<% if user_signed_in? %>
-  <h1><p>Hello <%= current_user.first_name %></p></h1>
-<% end %>

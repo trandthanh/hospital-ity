@@ -31,23 +31,29 @@
   }
 }
 
-.search-banner {
+.banner {
   display: flex;
   margin-top: 50px;
 }
 
-.search-banner-left {
+.banner-image {
   height: 75vh;
   width: 50%;
   background-size: contain;
   background-position: center;
-  // background-image: asset-url('banner.png');
 }
 
-.search-banner-right {
+.banner-text {
   width: 50%;
-  padding-right: 100px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.banner-image-medium {
+  height: 50vh;
+  width: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
