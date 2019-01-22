@@ -1,0 +1,8 @@
+<div class="nav-bar-right d-flex align-items-center">
+  <%= link_to new_user_registration_path, class: "navbar-link" do %>
+    <h6 class="h6-strip">Bénéficier d'un logement</h6>
+  <% end %>
+  <%= link_to new_user_registration_path(super_host: true), class: "navbar-link" do %>
+    <h6 class="h6-strip">Devenir hôte</h6>
+  <% end %>
+</div>

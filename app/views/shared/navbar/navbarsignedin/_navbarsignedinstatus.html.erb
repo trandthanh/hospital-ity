@@ -1,7 +1,11 @@
-<% if current_user.host == true %>
-  <%= link_to "Mes hébergements", "#", class: "px-3 d-none d-sm-block" %>
+<% if current_user.super_host == true %>
+  <%= link_to "#", class: "navbar-link" do %>
+    <h6 class="h6-strip">Mes hébergements</h6>
+  <% end %>
 <% elsif current_user.hospital_admin == true %>
-  <%= link_to "Mes hébergeurs", "#", class: "px-3 d-none d-sm-block" %>
+  <%= link_to "#", class: "navbar-link" do %>
+    <h6 class="h6-strip">Ma communauté</h6>
+  <% end %>
 <% else %>
   <%= link_to "#", class: "navbar-link" do %>
     <h6 class="h6-strip">Mon séjour</h6>

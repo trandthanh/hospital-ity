@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_192349) do
+ActiveRecord::Schema.define(version: 2019_01_22_103532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,12 +95,12 @@ ActiveRecord::Schema.define(version: 2019_01_17_192349) do
     t.string "family"
     t.string "first_name"
     t.string "family_member"
-    t.boolean "host", default: false, null: false
     t.boolean "hospital_admin", default: false, null: false
     t.boolean "super_admin", default: false, null: false
     t.bigint "hospital_id"
+    t.boolean "super_host", default: false, null: false
     t.bigint "code_id"
-    t.index ["code_id"], name: "index_users_on_code_id"
+    t.index ["code_id"], name: "index_users_on_code_id", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hospital_id"], name: "index_users_on_hospital_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
