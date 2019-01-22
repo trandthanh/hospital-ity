@@ -36,7 +36,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       redirect_to root_url, :notice => "code incorrect"
-
     end
   end
 

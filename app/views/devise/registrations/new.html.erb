@@ -2,7 +2,14 @@
   <h2>Devenir hôte-bénévole</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
     <div class="form-inputs">
+
+      <%= f. hidden_field :super_host, :value => true %>
+      <%#= f.input :code_id, :label_method => :code %>
+
       <%= f.input :family,
                   required: true,
                   input_html: { autocomplete: "family" }%>
@@ -26,10 +33,6 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :super_hosts,
-                  label: false,
-                  input_html: { value: params[:super_host],
-                  hidden: true } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
