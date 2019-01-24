@@ -16,6 +16,14 @@ class User < ApplicationRecord
 
   # validates :code, presence: true, if: Proc.new { |user| user.super_host == false }
   validates :family_member, presence: true, if: Proc.new { |user| user.super_host == false }
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    approved? ? super : :not_approved
+  end
 end
 
 
