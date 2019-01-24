@@ -16,9 +16,6 @@
       <%= f.input :first_name,
                   required: true,
                   input_html: { autocomplete: "first_name" }%>
-      <%= f.input :family_member,
-                  required: true,
-                  input_html: { autocomplete: "family_member" }%>
       <%= f.input :hospital_id, collection: Hospital.all, :label_method => :hospital_name,
                   required: true,
                   input_html: { autocomplete: "hospital_id" }%>
@@ -61,7 +58,10 @@
       <%= f.input :email,
                   required: true,
                   input_html: { autocomplete: "email" }%>
-      <%= f.input :code_id, :label_method => :code %>
+      <%#= f.input :code_id, :label_method => :code %>
+      <%= simple_fields_for :other do |o| %>
+        <%= o.input :code, label: 'Renseignez le code donné' %>
+      <% end %>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
