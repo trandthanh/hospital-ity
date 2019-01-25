@@ -1,0 +1,12 @@
+.dashboard-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $alice-blue;
+  border-top: 1px solid rgb(232, 232, 232);
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.dashboard-tab-element {
+  margin: 20px 15px;
+}

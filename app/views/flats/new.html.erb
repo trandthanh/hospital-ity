@@ -1,0 +1,36 @@
+<%= form_for(@flat) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :zipcode_district %>
+    <%= f.text_field :zipcode_district, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :capacity %>
+    <%= f.number_field :capacity, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number_of_rooms %>
+    <%= f.number_field :number_of_rooms, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price_per_day %>
+    <%= f.number_field :price_per_day, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Proposer votre appartement', class: 'medium-button' %>
+<% end %>
+
+

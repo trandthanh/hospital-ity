@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get '/unapproved_list', to: 'unapproved_users#unapprovedlist'
   get '/hebergements', to: 'dashboards#hebergements'
 
+  resources :flats
+
   root to: 'pages#home'
 end
