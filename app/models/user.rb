@@ -15,7 +15,8 @@ class User < ApplicationRecord
   has_many :reviews
 
   # validates :code, presence: true, if: Proc.new { |user| user.super_host == false }
-  validates :family_member, presence: true, if: Proc.new { |user| user.super_host == false }
+  validates :family_member, presence: true, if: Proc.new { |user| user.super_host.nil? }
+  validates :family_member, presence: true, if: Proc.new { |user| user.hospital_admin.nil? }
 
   def active_for_authentication?
     super && approved?

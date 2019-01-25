@@ -6,6 +6,9 @@
     <h6 class="h6-strip">Devenir hôte</h6>
   <% end %>
 
+  <%= link_to new_user_registration_path(hospital_admin: true), class: "navbar-link" do %>
+    <h6 class="h6-strip">(Admin d'hôpital)</h6>
+  <% end %>
 
   <%= link_to new_user_session_path, class: "navbar-link" do %>
     <h6 class="h6-strip">Se connecter</h6>

@@ -1,14 +1,18 @@
 class UnapprovedUsersController < ApplicationController
 
-  def index
+  def unapprovedlist
+    authorize :unapproved_user, :unapprovedlist?
+
     if params[:approved] == "false"
-      @users = User.where(approved: false)
+      @users = User.where(approved: false, hospital_id: current_user.hospital_id)
+      # @users = policy_scope(User).where(approved: false)
     else
-      @users = User.all
+      @users = User.where(hospital_id: current_user.hospital_id)
+      # @users = policy_scope(User)
     end
   end
 
-  def edit
+  # def edit
 
-  end
+  # end
 end

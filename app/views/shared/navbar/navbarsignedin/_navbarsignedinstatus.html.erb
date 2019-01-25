@@ -6,6 +6,11 @@
   <%= link_to "#", class: "navbar-link" do %>
     <h6 class="h6-strip">Ma communauté</h6>
   <% end %>
+
+  <% if policy(:unapproved_user).unapprovedlist? %>
+    <%= link_to 'Dashboard', unapproved_list_path %>
+  <% end %>
+
 <% else %>
   <%= link_to "#", class: "navbar-link" do %>
     <h6 class="h6-strip">Mon séjour</h6>
