@@ -1,5 +1,5 @@
 <% if current_user.super_host == true %>
-  <%= link_to "#", class: "navbar-link" do %>
+  <%= link_to hebergements_path, class: "navbar-link" do %>
     <h6 class="h6-strip">Mes hébergements</h6>
   <% end %>
 <% elsif current_user.hospital_admin == true %>
