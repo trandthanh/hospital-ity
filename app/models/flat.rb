@@ -1,5 +1,6 @@
 class Flat < ApplicationRecord
   belongs_to :user
+  belongs_to :hospital
 
   has_many :bookings
   has_many :reviews

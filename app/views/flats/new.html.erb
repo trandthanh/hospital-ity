@@ -29,7 +29,11 @@
     <%= f.number_field :price_per_day, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :hospital_id %>
+    <%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name %>
+  </div>
+
   <%= f.submit 'Proposer votre appartement', class: 'medium-button' %>
 <% end %>
-
 

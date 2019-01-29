@@ -1,4 +1,4 @@
-<%= simple_form_for :query, url: root_path, method: 'get' do |f| %>
+<%= simple_form_for :query, url: search_path, method: 'get' do |f| %>
   <div class="home-search-input">
     <div class="home-search-input-items">
       <%= f.input :hospital, collection: @hospitals, as: :select, label: false, prompt: "Hôpital" %>

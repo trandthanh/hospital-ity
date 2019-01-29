@@ -6,6 +6,10 @@ class FlatsController < ApplicationController
   end
 
   def search
+    # @searchedflats = Flat.joins(:hospitals).where("hospitals.hospital_name = ${params[:query][:hospital]}")
+
+    @searchedflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+    authorize @searchedflats
   end
 
   def new
@@ -31,7 +35,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day)
+    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id)
   end
 
   def set_flat

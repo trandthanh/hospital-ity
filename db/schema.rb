@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_180425) do
+ActiveRecord::Schema.define(version: 2019_01_29_163015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_01_25_180425) do
     t.boolean "verified", default: false, null: false
     t.boolean "availability", default: false, null: false
     t.string "address"
+    t.bigint "hospital_id"
+    t.index ["hospital_id"], name: "index_flats_on_hospital_id"
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_01_25_180425) do
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
   add_foreign_key "codes", "hospitals"
+  add_foreign_key "flats", "hospitals"
   add_foreign_key "flats", "users"
   add_foreign_key "hospital_flats", "flats"
   add_foreign_key "hospital_flats", "users"
