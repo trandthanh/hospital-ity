@@ -12,3 +12,13 @@
     <h6 class="h6-strip">Vos hébergements</h6>
   </div>
 </div>
+
+<div class="dashboard-content">
+  <% @userflats.each do |f| %>
+    <div class="flat-card">
+      <%= link_to flat_path(f) do %>
+        <p><%= f.address %>, <%= f.zipcode %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

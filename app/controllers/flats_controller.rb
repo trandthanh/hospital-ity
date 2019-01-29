@@ -15,6 +15,7 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
+    authorize @flat
     @flat.user = current_user
     if @flat.save
       redirect_to flat_path(@flat)
@@ -24,11 +25,16 @@ class FlatsController < ApplicationController
   end
 
   def show
+    authorize @flat
   end
 
   private
 
   def flat_params
     params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day)
+  end
+
+  def set_flat
+    @flat = Flat.find(params[:id])
   end
 end

@@ -8,4 +8,8 @@ class FlatPolicy < ApplicationPolicy
   def create?
     true if user.super_host?
   end
+
+  def show?
+    true
+  end
 end
