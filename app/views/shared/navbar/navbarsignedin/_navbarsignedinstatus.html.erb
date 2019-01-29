@@ -2,6 +2,9 @@
   <%= link_to hebergements_path, class: "navbar-link" do %>
     <h6 class="h6-strip">Mes hébergements</h6>
   <% end %>
+  <%= link_to new_flat_path, class: "navbar-link" do %>
+    <h6 class="h6-strip">Ajouter un appartement</h6>
+  <% end %>
 <% elsif current_user.hospital_admin == true %>
   <%= link_to "#", class: "navbar-link" do %>
     <h6 class="h6-strip">Ma communauté</h6>
