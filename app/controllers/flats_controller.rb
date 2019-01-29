@@ -10,6 +10,38 @@ class FlatsController < ApplicationController
 
     @searchedflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
     authorize @searchedflats
+
+    # @flats = Flat.where.not(latitude: nil, longitude: nil)
+    # @flats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).not(latitude: nil, longitude: nil)
+    # authorize @flats
+    @hospital = Hospital.where(hospital_name: params[:query][:hospital])
+
+    @test = @searchedflats + @hospital
+
+    @markers = @test.map do |flat|
+      {
+        lng: flat.longitude,
+        lat: flat.latitude,
+        # image_url: helpers.asset_url('hospitalmarker.png') if flat.is_a? Hospital
+        image_url: flat.is_a?(Hospital) ? helpers.asset_url('placeholder.png') : helpers.asset_url('house.png')
+      }
+    end
+
+    # @markers = @searchedflats.map do |flat|
+    #   {
+    #     lng: flat.longitude,
+    #     lat: flat.latitude
+    #   }
+    # end
+
+    # @markes = @hospital.map do |flat|
+    #   {
+    #     lng: flat.longitude,
+    #     lat: flat.latitude
+    #   }
+    # end
+
+
   end
 
   def new
