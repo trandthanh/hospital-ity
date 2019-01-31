@@ -11,3 +11,18 @@
 a:hover {
   text-decoration: none;
 }
+
+
+.navbar-link-login {
+  color: $alice-blue;
+  margin-right: 20px;
+  margin-top: 10px;
+  background-color: $yankees-blue;
+  padding: 15px 25px;
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    text-decoration: none;
+    color: white;
+    background-color: $baby-blue;
+  }
+}
