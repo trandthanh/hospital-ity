@@ -9,11 +9,21 @@
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
     <h1>Réservation</h1>
 
-    <%= simple_form_for ([@flat, @booking]) do |f| %>
-      <%= f.input :arrival, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :departure, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
-    <% end %>
+
+    <div class="widget-content" data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+      <hr>
+
+      <%= simple_form_for ([@flat, @booking]) do |f| %>
+        <%= f.input :arrival, as: :string, label: "Dates", placeholder: "From", required: false %>
+        <%= f.input :departure, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, required: false %>
+        <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+
+
+
   </div>
 </div>
+
 
