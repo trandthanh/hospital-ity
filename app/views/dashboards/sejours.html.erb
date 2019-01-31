@@ -1,0 +1,15 @@
+<div class="text-center margin-top-50 margin-bottom-50">
+  <h1 class="yankeesblue">Bonjour <%= @user.first_name %>,</h1>
+</div>
+
+<div class="dashboard-tab">
+  <div class="dashboard-tab-element">
+    <h6 class="h6-strip">Vos séjours</h6>
+  </div>
+</div>
+
+<% @userbookings.each do |ub| %>
+  <p>Vous allez habité chez <%= ub.flat.user.first_name %></p>
+  <p>du <%= ub.arrival %> au <%= ub.departure %></p>
+  <%= link_to "Voir l'appartement", flat_path(ub.flat) %>
+<% end %>
