@@ -18,11 +18,11 @@ class FlatsController < ApplicationController
     #        params[:query][:arrival], params[:query][:departure])
     # @searchedflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
     # authorize @searchedflats
-
     # @final = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
+    # @capacity = Flat.where('capacity >= ?', params[:query][:capacity])
 
     @hospital = Hospital.where(hospital_name: params[:query][:hospital])
-    @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+    @availableflats = Flat.where('capacity >= ?', params[:query][:capacity]).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
     authorize :flat, :search?
 
     @places = @availableflats + @hospital
