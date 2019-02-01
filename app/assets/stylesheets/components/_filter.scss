@@ -1,0 +1,18 @@
+.search-filter {
+  display: flex;
+  box-shadow: 0 2px 10px rgba(148, 158, 166, 0.1);
+  padding: 20px 20px;
+  .form-control {
+    font-size: 14px;
+    height: 35px !important;
+  }
+}
+
+.filter-search-inputs {
+  display: flex;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+

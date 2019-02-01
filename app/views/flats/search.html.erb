@@ -1,19 +1,79 @@
-<h1>Search</h1>
+<div class="search-filter">
+  <%= simple_form_for :query, url: search_path, method: 'get' do |f| %>
+    <div class="filter-search-inputs">
+      <%= f.hidden_field :hospital, value: params[:query][:hospital] %>
+          <% if params[:query][:date].blank? %>
+            <%= f.input :date, as: :string, label: false, placeholder: "Arrivée", input_html: {class: "datepicker"}, required: false %>
+          <% else %>
+            <%= f.input :date, as: :string, label: false, placeholder: "Arrivée", input_html: {class: "datepicker", :value => Date.parse(params[:query][:date])}, required: false %>
+          <% end %>
+          <%= f.input :capacity, as: :integer, label: false, placeholder: "Membres", required: false, :input_html => { :value => params[:query][:capacity] } %>
+        <%= f.button :submit, value: 'Filtrer', class: "small-button" %>
+    <% end %>
+    </div>
+</div>
 
+<div class="search-flats-wrapper">
+  <div class="flat-list-cards">
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
+    <div class="test">
+      <h1>hello</h1>
+    </div>
 
-  <% @availableflats.each do |af| %>
-    <%= af.id %>
-  <% end %>
-<hr>
+  </div>
+  <div
+    id="map"
 
-  <%#= @searchedflats %>
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 
+</div>
 
-
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>

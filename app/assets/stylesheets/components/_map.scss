@@ -1,0 +1,16 @@
+.search-flats-wrapper {
+  display: flex;
+  width: 100vw;
+}
+
+#map {
+  position: sticky !important;
+  height: 100vh;
+  top: 0px;
+  width: 50%;
+}
+
+.flat-list-cards {
+  width: 50%;
+}
+

@@ -19,3 +19,15 @@
     cursor: pointer;
   }
 }
+
+.small-button {
+  color: white;
+  background-color: $baby-blue;
+  padding: 0 50px;
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    opacity: 0.8;
+    cursor: pointer;
+    color: white;
+  }
+}
