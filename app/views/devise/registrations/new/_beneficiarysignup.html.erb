@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row ">
+    <div class="xs-12 ">
+      <div class="form-login">
+        <h1 class="celestialblue">Bénéficier de Hospital.ité</h1>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <div class="form-inputs">
+            <%= f.input :family,
+                        required: true,
+                        autofocus: true,
+                        label: 'Votre nom de famille',
+                        input_html: { autocomplete: "family" }%>
+            <%= f.input :first_name,
+                        required: true,
+                        label: 'Votre prénom',
+                        input_html: { autocomplete: "first_name" }%>
+            <%= f.input :family_member,
+                        required: true,
+                        label: 'Votre rapport au patient (compagne, père, mère, vous-même...)',
+                        input_html: { autocomplete: "family_member" }%>
+            <%= f.input :hospital_id, collection: Hospital.all, :label_method => :hospital_name,
+                        required: true,
+                        label: 'Votre centre de soin',
+                        input_html: { autocomplete: "hospital_id" }%>
+            <%= f.input :email,
+                        required: true,
+                        label: 'Votre email',
+                        input_html: { autocomplete: "email" }%>
+            <%= simple_fields_for :other do |o| %>
+              <%= o.input :code, label: 'Renseignez le code donné au centre de soin' %>
+            <% end %>
+            <%= f.input :password,
+                        required: true,
+                        label: 'Votre mot de passe',
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        label: 'Confirmer votre mot de passe',
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Je m'inscris à Hospital.ité", class: "btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
