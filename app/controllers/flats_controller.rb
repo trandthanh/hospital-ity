@@ -21,10 +21,23 @@ class FlatsController < ApplicationController
     # @final = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
     # @capacity = Flat.where('capacity >= ?', params[:query][:capacity])
 
-    @hospital = Hospital.where(hospital_name: params[:query][:hospital])
-    @availableflats = Flat.where('capacity >= ?', params[:query][:capacity]).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
-    authorize :flat, :search?
 
+    if params[:query][:capacity].blank? && params[:query][:date].blank?
+      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+      authorize :flat, :search?
+    elsif params[:query][:capacity].blank?
+      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+      authorize :flat, :search?
+    elsif params[:query][:date].blank?
+      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+      authorize :flat, :search?
+    else
+      @availableflats = Flat.where('capacity >= ?', params[:query][:capacity]).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+      authorize :flat, :search?
+    end
+
+
+    @hospital = Hospital.where(hospital_name: params[:query][:hospital])
     @places = @availableflats + @hospital
 
     @markers = @places.map do |flat|
