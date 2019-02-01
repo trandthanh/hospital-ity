@@ -2,7 +2,9 @@ import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css"
 
 
-// flatpickr(".datepicker", {})
+flatpickr(".datepicker", {})
+
+
 
 const toggleDateInputs = function() {
   const arrivalInput = document.getElementById('booking_arrival');

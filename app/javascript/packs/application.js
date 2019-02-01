@@ -5,9 +5,10 @@ import "../plugins/flatpickr"
 import { toggleDateInputs } from '../plugins/flatpickr';
 
 initMapbox();
+
 toggleDateInputs();
 
 
 
-const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
-console.log(unvailableDates)
+// const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
+// console.log(unvailableDates)

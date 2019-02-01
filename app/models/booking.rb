@@ -5,6 +5,13 @@ class Booking < ApplicationRecord
   validates :arrival, :departure, presence: true, availability: true
   validate :departure_after_arrival
 
+  # def self.between(starts_at, ends_at)
+  #   where(
+  #    '? BETWEEN bookings.arrival AND bookings.departure',
+  #    starts_at
+  #   )
+  # end
+
   private
 
   def departure_after_arrival
@@ -15,3 +22,6 @@ class Booking < ApplicationRecord
     end
   end
 end
+
+
+

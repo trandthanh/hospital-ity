@@ -6,42 +6,34 @@ class FlatsController < ApplicationController
   end
 
   def search
-    # @searchedflats = Flat.joins(:hospitals).where("hospitals.hospital_name = ${params[:query][:hospital]}")
+    # @booked = Flat.where.not('? BETWEEN flat.bookings.arrival AND flat.bookings.departure', Date.parse(params[:query][:date])
+    # @booked = Flat.left_outer_joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
+    # @booked = Flat.left_outer_joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
+    # Booking.where('arrival_date < ? OR leaving_date > ?', self.arrival_date, self.leaving_date)
+    # @booked = Flat.joins(:bookings).where('bookings.departure < ? AND bookings.arrival > ?', Date.parse(params[:query][:arrival]), Date.parse(params[:query][:departure]))
+    # @booked = Flat.joins("LEFT JOIN bookings ON bookings.flat_id = flats.id").where("bookings.id IS NULL OR bookings.arrival > ? AND bookings.departure < ?", Date.parse(params[:query][:departure]), Date.parse(params[:query][:arrival])).group("flats.id")
+    # @booked = Flat.left_outer_joins(:bookings)
+    #    .where.not('? BETWEEN bookings.arrival AND bookings.departure OR
+    #        ? BETWEEN bookings.arrival OR bookings.departure',
+    #        params[:query][:arrival], params[:query][:departure])
+    # @searchedflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+    # authorize @searchedflats
 
-    @searchedflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
-    authorize @searchedflats
+    # @final = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
 
-    # @flats = Flat.where.not(latitude: nil, longitude: nil)
-    # @flats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).not(latitude: nil, longitude: nil)
-    # authorize @flats
     @hospital = Hospital.where(hospital_name: params[:query][:hospital])
+    @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+    authorize :flat, :search?
 
-    @test = @searchedflats + @hospital
+    @places = @availableflats + @hospital
 
-    @markers = @test.map do |flat|
+    @markers = @places.map do |flat|
       {
         lng: flat.longitude,
         lat: flat.latitude,
-        # image_url: helpers.asset_url('hospitalmarker.png') if flat.is_a? Hospital
         image_url: flat.is_a?(Hospital) ? helpers.asset_url('placeholder.png') : helpers.asset_url('house.png')
       }
     end
-
-    # @markers = @searchedflats.map do |flat|
-    #   {
-    #     lng: flat.longitude,
-    #     lat: flat.latitude
-    #   }
-    # end
-
-    # @markes = @hospital.map do |flat|
-    #   {
-    #     lng: flat.longitude,
-    #     lat: flat.latitude
-    #   }
-    # end
-
-
   end
 
   def new
