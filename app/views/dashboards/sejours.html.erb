@@ -2,14 +2,36 @@
   <h1 class="yankeesblue">Bonjour <%= @user.first_name %>,</h1>
 </div>
 
-<div class="dashboard-tab">
+<!-- <div class="dashboard-tab">
   <div class="dashboard-tab-element">
     <h6 class="h6-strip">Vos séjours</h6>
   </div>
+</div> -->
+
+<div class="dashboard-content background-aliceblue">
+
+  <% unless @currentbookings.empty? %>
+    <div class="sejours-container">
+      <h1 class="yankeesblue">Séjours en cours</h1>
+    </div>
+  <% end %>
+
+  <div class="sejours-container">
+    <h1 class="yankeesblue">Séjours prévus</h1>
+    <% @futurebookings.each do |fb| %>
+      <p>Vous allez habité chez <%= fb.flat.user.first_name %></p>
+      <p>du <%= fb.arrival %> au <%= fb.departure %></p>
+      <%= link_to "Voir l'appartement", flat_path(fb.flat) %>
+    <% end %>
+  </div>
+
+  <div class="sejours-container">
+    <h1 class="yankeesblue">Séjours passés</h1>
+    <% @pastbookings.each do |booking| %>
+      <p>Vous allez habité chez <%= booking.flat.user.first_name %></p>
+      <p>du <%= booking.arrival %> au <%= booking.departure %></p>
+      <%= link_to "Voir l'appartement", flat_path(booking.flat) %>
+    <% end %>
+  </div>
 </div>
 
-<% @userbookings.each do |ub| %>
-  <p>Vous allez habité chez <%= ub.flat.user.first_name %></p>
-  <p>du <%= ub.arrival %> au <%= ub.departure %></p>
-  <%= link_to "Voir l'appartement", flat_path(ub.flat) %>
-<% end %>
