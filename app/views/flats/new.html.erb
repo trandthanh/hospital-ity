@@ -1,4 +1,4 @@
-<%= form_for(@flat) do |f| %>
+<%= simple_form_for(@flat) do |f| %>
   <div class="form-group">
     <%= f.label :address %>
     <%= f.text_field :address, class: 'form-control' %>
@@ -32,6 +32,11 @@
   <div class="form-group">
     <%= f.label :hospital_id %>
     <%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
   </div>
 
   <%= f.submit 'Proposer votre appartement', class: 'medium-button' %>
