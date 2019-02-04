@@ -1,21 +1,15 @@
-.default-gray {
-  background-color: $default-gray;
-}
-
-.background-default-gray {
-  background-color: $default-gray;
-}
-
-.background-aliceblue {
-  background-color: $alice-blue;
-}
-
-.background-azureishwhite {
-  background-color: $azureish-white;
-}
-
 .flex-wrapper {
   display: flex;
   padding: 20px 20px;
   width: 100%;
+}
+
+.show-content {
+  padding: 50px 200px;
+}
+
+.show-content-wrapper-halfsplit {
+  display: flex;
+  width: 100%;
+  padding-bottom: 50px;
 }

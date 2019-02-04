@@ -11,6 +11,87 @@
   </div>
 </div>
 
+<div class="show-content">
+  <div class="show-content-wrapper-halfsplit border-bottom">
+    <div class="show-description-container">
+      <p><%= @flat.description %></p>
+    </div>
+    <div class="show-profile-container">
+      <h6><%= @flat.user.first_name %></h6>
+    </div>
+  </div>
+  <div class="show-gallery">
+    <h1 class="yankeesblue">Les parties communes</h1>
+  </div>
+  <div class="show-equipments border-bottom padding-bottom-100">
+    <h1 class="yankeesblue">Les équipements</h1>
+    <div class="container margin-top-50">
+      <div class="row">
+        <div class="col text-center card-equipment background-azureishwhite">
+          <% if @flat.bathroom == true %>
+            <%= image_tag "001-shower.png", class: "equipment-icon margin-bottom-20" %>
+            <h6>Salle de bain privée</h6>
+          <% else %>
+            <%= image_tag "001-shower.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+            <h6>Salle de bain commune</h6>
+          <% end %>
+        </div>
+        <div class="col text-center card-equipment background-azureishwhite">
+          <% if @flat.parking == true %>
+            <%= image_tag "004-parking.png", class: "equipment-icon margin-bottom-20" %>
+            <h6>Parking gratuit</h6>
+          <% else %>
+            <%= image_tag "004-parking.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+            <h6>Parking payant</h6>
+          <% end %>
+        </div>
+        <div class="col text-center card-equipment background-azureishwhite">
+          <% if @flat.washing == true %>
+            <%= image_tag "003-washing-machine.png", class: "equipment-icon margin-bottom-20" %>
+            <h6>Laverie disponible</h6>
+          <% else %>
+            <%= image_tag "003-washing-machine.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+            <h6>Laverie publique</h6>
+          <% end %>
+        </div>
+        <div class="col text-center card-equipment background-azureishwhite">
+          <% if @flat.wifi == true %>
+            <%= image_tag "002-router.png", class: "equipment-icon margin-bottom-20" %>
+            <h6>Wifi disponible</h6>
+          <% else %>
+            <%= image_tag "002-router.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+            <h6>Pas de wifi</h6>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="show-location padding-top-100 padding-bottom-100 border-bottom">
+    <h1 class="yankeesblue">Le quartier</h1>
+    <h6 class="paynesgray"><%= @flat.hospital.zipcode %></h6>
+    <div class="show-content-wrapper-halfsplit margin-top-50">
+      <div class="show-description-container">
+        <p>This home is located in the heart of Austins artistic East End Community and just 0.80 miles from the famous 6th Street District (less than a 15 minute walk). We are stones throw from everything from five star dining to food trailers, bars, shops, and clubs. A list of recommendations will be provided with descriptions upon rental.</p>
+      </div>
+      <div class="show-profile-container">
+        <h6>Distance du centre de soin</h6>
+        <p>Vous pouvez accéder au centre de soin à pied.</p>
+      </div>
+    </div>
+    <div class="show-map">
+      <h1>Mettre la map ici</h1>
+    </div>
+  </div>
+  <div class="show-reviews padding-top-100">
+    <h1 class="yankeesblue">Les commentaires</h1>
+
+  </div>
+</div>
+
+
+
+
+
 
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
