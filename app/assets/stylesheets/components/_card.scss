@@ -7,3 +7,16 @@
   justify-content: center;
   padding: 20px;
 }
+
+.card-flat {
+  display: flex;
+  margin: 15px;
+  border-radius: 3px;
+}
+
+.card-flat-picture {
+  height: 200px;
+  width: 260px;
+  background-size: cover;
+  background-position: center;
+}

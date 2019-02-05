@@ -15,62 +15,32 @@
 
 <div class="search-flats-wrapper">
   <div class="flat-list-cards">
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
-    <div class="test">
-      <h1>hello</h1>
-    </div>
+    <p class="padding-top-bottom-20 border-bottom margin-left-right-20 paleaqua">Le prix indiqué correspond au prix total par nuit.</p>
+    <h3 class="padding-top-50 margin-left-right-20 margin-bottom-20 paynesgray">Les <%= @availableflats.count %> logements disponibles</h3>
+
+    <% @availableflats.each do |flat| %>
+      <div class="card-flat border-gray">
+
+        <% if flat.photo.blank? %>
+          <div class="card-flat-picture">
+
+          </div>
+        <% else %>
+          <div class="card-flat-picture" style="background-image: url('<%= cl_image_path flat.photo %>')">
+
+          </div>
+        <% end %>
+        <div class="card-flat-body padding-15">
+          <h6>LE CENTRE : <%= flat.hospital.hospital_name.upcase %></h6>
+          <h5></h5>
+
+        </div>
+      </div>
+    <% end %>
 
   </div>
   <div
     id="map"
-
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
