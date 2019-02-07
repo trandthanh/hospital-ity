@@ -20,3 +20,15 @@
   background-size: cover;
   background-position: center;
 }
+
+.card-flat-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.card-flat-body-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
