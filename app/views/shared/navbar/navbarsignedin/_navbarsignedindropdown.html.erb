@@ -1,7 +1,7 @@
 <div class="dropdown  d-none d-sm-block">
   <%= image_tag "wavy.png", class: "avatar", alt:"avatar", type: "image", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" } %>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-    <%= link_to "#", class: "dropdown-item" do %>
+    <%= link_to profile_path, class: "dropdown-item" do %>
       <h6 class="h6-strip">Mon profile</h6>
     <% end %>
     <%= link_to destroy_user_session_path, class: "dropdown-item", method: :delete do %>

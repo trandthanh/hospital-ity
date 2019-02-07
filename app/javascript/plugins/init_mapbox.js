@@ -7,7 +7,7 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
+  const mapElement = document.querySelector('.searchmap');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -35,8 +35,38 @@ const initMapbox = () => {
   }
 };
 
+const initShowMapbox = () => {
+  const showmapElement = document.querySelector('.showmap');
+  const marker = JSON.parse(showmapElement.dataset.markers);
+
+  if (showmapElement) { // only build a map if there's a div#map to inject into
+    mapboxgl.accessToken = showmapElement.dataset.mapboxApiKey;
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [ marker.lng, marker.lat ],
+      zoom: 15
+    });
 
 
-export { initMapbox };
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '40px';
+      element.style.height = '40px';
+
+
+      new mapboxgl.Marker(element)
+      .setLngLat([marker.lng, marker.lat])
+      .addTo(map);
+
+
+  }
+};
+
+
+
+export { initMapbox, initShowMapbox };
 
 

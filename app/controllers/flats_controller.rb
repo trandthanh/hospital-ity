@@ -68,6 +68,12 @@ class FlatsController < ApplicationController
   def show
     authorize @flat
 
+    @marker =
+      {
+        lng: @flat.longitude,
+        lat: @flat.latitude,
+        image_url: helpers.asset_url('house.png')
+      }
     @booking = Booking.new
   end
 

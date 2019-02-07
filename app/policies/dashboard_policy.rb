@@ -8,4 +8,8 @@ class DashboardPolicy < Struct.new(:user, :dashboard)
     true unless user.super_host? || user.hospital_admin?
   end
 
+  def profile?
+    true
+  end
+
 end

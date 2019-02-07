@@ -17,4 +17,9 @@ class DashboardsController < ApplicationController
     @pastbookings = @mybookings.select { |booking| booking.departure < Date.today }
   end
 
+  def profile
+    authorize :dashboard, :profile?
+    @user = current_user
+  end
+
 end

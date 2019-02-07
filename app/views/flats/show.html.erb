@@ -79,7 +79,14 @@
       </div>
     </div>
     <div class="show-map">
-      <h1>Mettre la map ici</h1>
+      <div
+        id="map"
+        class="showmap"
+        style="width: 100%;
+        height: 300px;"
+        data-markers="<%= @marker.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
   </div>
   <div class="show-reviews padding-top-100">

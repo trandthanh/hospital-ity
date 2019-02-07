@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/unapproved_list', to: 'unapproved_users#unapprovedlist'
   get '/hebergements', to: 'dashboards#hebergements'
   get '/sejours', to: 'dashboards#sejours'
+  get '/profile', to: 'dashboards#profile'
 
   # Search
   get '/search', to: 'flats#search'
