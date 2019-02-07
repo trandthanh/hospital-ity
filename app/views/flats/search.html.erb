@@ -19,34 +19,35 @@
     <h3 class="padding-top-50 margin-left-right-20 margin-bottom-20 paynesgray">Les <%= @availableflats.count %> logements disponibles</h3>
 
     <% @availableflats.each do |flat| %>
-      <div class="card-flat border-gray">
-
-        <% if flat.photo.blank? %>
-          <div class="card-flat-picture">
-          </div>
-        <% else %>
-          <div class="card-flat-picture" style="background-image: url('<%= cl_image_path flat.photo %>')">
-          </div>
-        <% end %>
-        <div class="card-flat-body padding-15">
-          <div class="card-flat-body-top">
-            <h6 class="paynesgray">LE CENTRE : <%= flat.hospital.hospital_name.upcase %></h6>
-            <h5>
-              <% if flat.flat_type.nil? %>
-                Un logement
-              <% else %>
-                Une <%= flat.flat_type.upcase %>
-              <% end %>
-              chez <%= flat.user.first_name %>
-            </h5>
-            <p class="paynesgray"><%= flat.capacity %> voyageurs / <%= flat.number_of_rooms %> chambres</p>
-          </div>
-          <div class="card-flat-body-bottom">
-            <h5 class="h5-strip"><%= flat.price_per_day %> € / jour</h5>
+      <%= link_to flat_path(flat) do  %>
+        <div class="card-flat border-gray">
+          <% if flat.photo.blank? %>
+            <div class="card-flat-picture">
+            </div>
+          <% else %>
+            <div class="card-flat-picture" style="background-image: url('<%= cl_image_path flat.photo %>')">
+            </div>
+          <% end %>
+          <div class="card-flat-body padding-15">
+            <div class="card-flat-body-top">
+              <h6 class="paynesgray">LE CENTRE : <%= flat.hospital.hospital_name.upcase %></h6>
+              <h5>
+                <% if flat.flat_type.nil? %>
+                  Un logement
+                <% else %>
+                  Une <%= flat.flat_type.upcase %>
+                <% end %>
+                chez <%= flat.user.first_name %>
+              </h5>
+              <p class="paynesgray"><%= pluralize flat.capacity, "voyageur" %> / <%= pluralize flat.number_of_rooms, "chambre" %></p>
+            </div>
+            <div class="card-flat-body-bottom">
+              <h5 class="h5-strip"><%= flat.price_per_day %> € / jour</h5>
+            </div>
           </div>
         </div>
+      <% end %>
 
-      </div>
     <% end %>
 
   </div>
