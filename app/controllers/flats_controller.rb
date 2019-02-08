@@ -68,6 +68,8 @@ class FlatsController < ApplicationController
   def show
     authorize @flat
 
+    @user = current_user
+
     @marker =
       {
         lng: @flat.longitude,
