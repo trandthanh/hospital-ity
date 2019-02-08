@@ -1,0 +1,11 @@
+<h1>Ajouter des photos</h1>
+
+
+<%= simple_form_for [@flat, @photo] do |f| %>
+  <div class="form-inputs form-photo">
+    <%= f.input :url, as: :file, :multiple => true %>
+    <%= f.text_field :room, class: 'form-control' %>
+  </div>
+  <%= f.submit "add a photo", class: "btn btn-primary" %>
+<% end %>
+

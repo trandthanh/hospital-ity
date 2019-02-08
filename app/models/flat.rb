@@ -13,6 +13,7 @@ class Flat < ApplicationRecord
   has_many :hospital_flats
 
   validates :photo, presence: true
+  validates :photos, length: { maximum: 6 }
 
 
   def unavailable_dates

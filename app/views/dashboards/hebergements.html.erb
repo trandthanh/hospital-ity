@@ -20,6 +20,7 @@
       <%= link_to flat_path(f) do %>
         <p><%= f.address %>, <%= f.zipcode %></p>
       <% end %>
+      <%= link_to "Ajouter des photos", new_flat_photo_path(f) %>
     </div>
   <% end %>
 </div>

@@ -21,6 +21,7 @@ class FlatsController < ApplicationController
     # @final = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).joins(:bookings).where.not('? BETWEEN bookings.arrival AND bookings.departure', Date.parse(params[:query][:date]))
     # @capacity = Flat.where('capacity >= ?', params[:query][:capacity])
 
+    @user = current_user
 
     if params[:query][:capacity].blank? && params[:query][:date].blank?
       @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
@@ -67,6 +68,8 @@ class FlatsController < ApplicationController
 
   def show
     authorize @flat
+
+    @flatphotos = Photo.where(flat_id: @flat)
 
     @user = current_user
 
