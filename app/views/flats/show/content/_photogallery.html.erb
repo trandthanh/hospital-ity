@@ -1,0 +1,15 @@
+<h1 class="yankeesblue margin-bottom-50">Les parties communes</h1>
+<% if @flatphotos.empty? %>
+  <p>Pas de photos</p>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <% @flatphotos.each do |photo| %>
+        <div class="card-gallery xs-3 px-1">
+          <div class="photo-gallery" style="background-image: url('<%= cl_image_path photo.url %>')"></div>
+          <p class="p-15px"><%= photo.room %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

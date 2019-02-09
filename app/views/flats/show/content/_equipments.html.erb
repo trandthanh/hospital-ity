@@ -1,0 +1,41 @@
+<h1 class="yankeesblue">Les équipements</h1>
+<div class="container margin-top-50">
+  <div class="row">
+    <div class="col text-center card-equipment background-azureishwhite">
+      <% if @flat.bathroom == true %>
+        <%= image_tag "001-shower.png", class: "equipment-icon margin-bottom-20" %>
+        <h6>Salle de bain privée</h6>
+      <% else %>
+        <%= image_tag "001-shower.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+        <h6>Salle de bain commune</h6>
+      <% end %>
+    </div>
+    <div class="col text-center card-equipment background-azureishwhite">
+      <% if @flat.parking == true %>
+        <%= image_tag "004-parking.png", class: "equipment-icon margin-bottom-20" %>
+        <h6>Parking gratuit</h6>
+      <% else %>
+        <%= image_tag "004-parking.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+        <h6>Parking payant</h6>
+      <% end %>
+    </div>
+    <div class="col text-center card-equipment background-azureishwhite">
+      <% if @flat.washing == true %>
+        <%= image_tag "003-washing-machine.png", class: "equipment-icon margin-bottom-20" %>
+        <h6>Laverie disponible</h6>
+      <% else %>
+        <%= image_tag "003-washing-machine.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+        <h6>Laverie publique</h6>
+      <% end %>
+    </div>
+    <div class="col text-center card-equipment background-azureishwhite">
+      <% if @flat.wifi == true %>
+        <%= image_tag "002-router.png", class: "equipment-icon margin-bottom-20" %>
+        <h6>Wifi disponible</h6>
+      <% else %>
+        <%= image_tag "002-router.png", class: "equipment-icon margin-bottom-20 grayscale" %>
+        <h6>Pas de wifi</h6>
+      <% end %>
+    </div>
+  </div>
+</div>

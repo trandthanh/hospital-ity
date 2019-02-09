@@ -1,0 +1,48 @@
+<!-- Button trigger modal -->
+
+<button type="button" class="fixed-booked-button" data-toggle="modal" data-target="#exampleModal">
+  Réserver
+</button>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+            <h1>Réservation</h1>
+            <hr>
+
+            <div class="widget-content" data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+              <h5>Votre logement coûte <span class="celestialblue"><%= @flat.price_per_day %>€ / nuit</span>.</h5>
+              <hr>
+              <%= simple_form_for ([@flat, @booking]) do |f| %>
+                <%= f.input :arrival, as: :string, label: "Dates", placeholder: "From", required: false %>
+                <%= f.input :departure, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, required: false %>
+                <hr>
+                <h5>Le coût total de votre séjour : <span class="celestialblue total-price">0€</span>.</h5>
+                <div class="booking-button-box margin-top-40 margin-bottom-80">
+                  <%= f.button :submit, "Je réserve", class: "btn btn-primary book-button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div style="display: none;">
+  <%= content_tag :div, class: "temp_information", data: {temp: @flat.price_per_day } do %><% end %>
+</div>
+

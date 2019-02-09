@@ -1,0 +1,9 @@
+<div class="third-container background-azureishwhite">
+  <p class="semi-bold paynesgray margin-bottom-50">LE CENTRE : <%= @flat.hospital.hospital_name.upcase %></p>
+  <h1 class="margin-bottom-50">Une <br>
+    <%= @flat.flat_type.upcase %> <br>
+    pour vous, <br>
+    chez <%= @flat.user.first_name %></h1>
+  <h6>à 5m à pied de votre centre</h6>
+</div>
+<div class="twothirdcontainer" style="background-image: url('<%= cl_image_path @flat.photo %>')"></div>

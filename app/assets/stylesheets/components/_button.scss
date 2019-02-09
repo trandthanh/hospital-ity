@@ -31,3 +31,50 @@
     color: white;
   }
 }
+
+.fixed-booked-button {
+  position: sticky;
+  bottom: 50px;
+  right: 80px;
+  float: right;
+  position: -webkit-sticky;
+  margin-top: -50px;
+  background-color: $baby-blue;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  color: white;
+  border: 0;
+  padding: 10px 30px;
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    color: white;
+    background-color: $baby-blue-eyes;
+    cursor: pointer;
+  }
+}
+
+.page {
+  position: relative;
+  width: 100%;
+}
+
+.booking-button-box {
+  display: flex;
+}
+
+.book-button {
+  width: 100%;
+  background-color: $baby-blue;
+  color: white;
+  padding: 10px 30px;
+  border: 0;
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    color: white;
+    background-color: $baby-blue-eyes;
+    cursor: pointer;
+  }
+}

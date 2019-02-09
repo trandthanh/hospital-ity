@@ -3,13 +3,23 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 import { initMapbox, initShowMapbox } from '../plugins/init_mapbox';
 import "../plugins/flatpickr"
 import { toggleDateInputs } from '../plugins/flatpickr';
+import { priceUpdate } from '../plugins/priceupdate';
 
 initMapbox();
 initShowMapbox();
 
 toggleDateInputs();
 
+if (document.querySelector(".page")) {
+  priceUpdate();
+}
+
+
+
+
 
 
 // const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 // console.log(unvailableDates)
+
+
