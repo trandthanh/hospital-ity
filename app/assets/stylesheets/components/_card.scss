@@ -39,6 +39,14 @@
 .card-gallery {
   display: flex;
   flex-direction: column;
-  width: 33.33%;
+  width: 100%;
 }
 
+.row {
+  margin: 0 !important;
+  justify-content: flex-start !important;
+}
+
+.card-book-dashboard {
+  width: 100%;
+}

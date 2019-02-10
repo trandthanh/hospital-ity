@@ -16,4 +16,12 @@ class FlatPolicy < ApplicationPolicy
   def search?
     true
   end
+
+  def edit?
+    record.user == user
+  end
+
+  def update?
+    record.user == user
+  end
 end

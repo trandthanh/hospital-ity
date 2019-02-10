@@ -7,13 +7,14 @@ class Flat < ApplicationRecord
   belongs_to :user
   belongs_to :hospital
 
-  has_many :bookings
-  has_many :reviews
-  has_many :photos
-  has_many :hospital_flats
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :photos, dependent: :destroy
+  has_many :hospital_flats, dependent: :destroy
 
-  validates :photo, presence: true
+  # validates :photo, presence: true
   validates :photos, length: { maximum: 6 }
+  validates :flat_type, inclusion: { in: ["Chambre Privee", "Logement Entier"] }
 
 
   def unavailable_dates

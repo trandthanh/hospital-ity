@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show]
+  before_action :set_flat, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: [:show, :index, :search]
 
   def index
@@ -82,10 +82,27 @@ class FlatsController < ApplicationController
     @booking = Booking.new
   end
 
+  def edit
+    authorize @flat
+
+    @user = current_user
+  end
+
+  def update
+    if @flat.update(flat_params)
+      redirect_to flat_path(@flat)
+    else
+      render :edit
+    end
+    authorize @flat
+
+    @user = current_user
+  end
+
   private
 
   def flat_params
-    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type)
+    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type, :description, :wifi, :washing, :bathroom, :parking)
   end
 
   def set_flat

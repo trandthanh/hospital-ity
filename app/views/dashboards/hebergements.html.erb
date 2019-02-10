@@ -15,12 +15,30 @@
 </div>
 
 <div class="dashboard-content">
+  <h1>Hébergements</h1>
   <% @userflats.each do |f| %>
     <div class="flat-card">
       <%= link_to flat_path(f) do %>
         <p><%= f.address %>, <%= f.zipcode %></p>
       <% end %>
+      <%= link_to "Modifier l'appartement", edit_flat_path(f)  %>
       <%= link_to "Ajouter des photos", new_flat_photo_path(f) %>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <h1>Bookings</h1>
+  <% @userflats.each do |flat| %>
+    <div>
+      <%= flat.address %>
+      <% flat.bookings.each do |booking| %>
+        <p>Booking:</p>
+        <%= booking.user.first_name %>
+        <%= booking.arrival %>
+        <%= booking.departure %>
+      <% end %>
+      <hr>
     </div>
   <% end %>
 </div>

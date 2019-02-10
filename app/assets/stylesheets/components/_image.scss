@@ -11,8 +11,15 @@
 }
 
 .photo-gallery {
-  height: 200px;
   width: 100%;
+  height: 200px;
   background-position: center;
   background-size: cover;
+}
+
+.booking-photo {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
 }
