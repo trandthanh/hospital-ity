@@ -15,6 +15,8 @@ class DashboardsController < ApplicationController
     @currentbookings = @mybookings.select { |booking| booking.arrival < Date.today && Date.today < booking.departure }
     @futurebookings = @mybookings.select { |booking| Date.today < booking.arrival }
     @pastbookings = @mybookings.select { |booking| booking.departure < Date.today }
+
+    @bookingstocomment = @mybookings.select { |booking| booking.departure < Date.today && Date.today < booking.departure + 1.month}
   end
 
   def profile

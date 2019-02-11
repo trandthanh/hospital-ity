@@ -6,12 +6,12 @@ import { toggleDateInputs } from '../plugins/flatpickr';
 import { priceUpdate } from '../plugins/priceupdate';
 
 initMapbox();
-initShowMapbox();
 
 toggleDateInputs();
 
 if (document.querySelector(".page")) {
   priceUpdate();
+  initShowMapbox();
 }
 
 

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :flats do
     resources :bookings, only: [:create]
-    resources :photos, only: [:new, :create, :edit]
+    resources :photos, only: [:new, :create, :edit, :update]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
 
   root to: 'pages#home'

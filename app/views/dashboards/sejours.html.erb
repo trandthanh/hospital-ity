@@ -2,11 +2,13 @@
   <h1 class="yankeesblue">Bonjour <%= @user.first_name %>,</h1>
 </div>
 
-<!-- <div class="dashboard-tab">
-  <div class="dashboard-tab-element">
-    <h6 class="h6-strip">Vos séjours</h6>
-  </div>
-</div> -->
+<div class="notifications background-babyblue py-3 text-center">
+  <% @bookingstocomment.each do |booking| %>
+    <%= link_to new_flat_review_path(booking.flat) do %>
+      <p class="p-strip my-2 glitter">N'oubliez pas de laisser un commentaire de remerciements à <strong class="paynesgray"><%= booking.flat.user.first_name %></strong> pour votre séjour!</p>
+    <% end %>
+  <% end %>
+</div>
 
 <div class="dashboard-content background-aliceblue">
 

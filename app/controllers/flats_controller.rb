@@ -79,7 +79,10 @@ class FlatsController < ApplicationController
         lat: @flat.latitude,
         image_url: helpers.asset_url('house.png')
       }
+
     @booking = Booking.new
+
+    @reviews = Review.where(flat_id: @flat)
   end
 
   def edit

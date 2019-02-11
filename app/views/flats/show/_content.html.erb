@@ -12,5 +12,9 @@
 </div>
 <div class="show-reviews padding-top-100">
   <h1 class="yankeesblue">Les commentaires</h1>
+  <% @reviews.each do |review| %>
+    <%= review.comment %>
+    <%= review.user.first_name %>
+  <% end %>
 
 </div>
