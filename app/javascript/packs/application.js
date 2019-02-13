@@ -18,7 +18,6 @@ if (document.querySelector(".page")) {
 
 
 
-
 // const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 // console.log(unvailableDates)
 

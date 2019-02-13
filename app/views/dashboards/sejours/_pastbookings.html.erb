@@ -1,0 +1,22 @@
+<div class="sejours-container padding-bottom-100">
+  <h1 class="yankeesblue mb-5">Séjours passés</h1>
+  <div class="row">
+    <% @pastbookings.each do |booking| %>
+      <div class="col-4 px-1 py-2">
+        <%= link_to flat_path(booking.flat) do %>
+          <div class="card-book-dashboard">
+            <% if booking.flat.photo.blank? %>
+              <p>Pas de photos</p>
+            <% else %>
+                <div class="booking-photo" style="background-image: url('<%= cl_image_path booking.flat.photo %>')"></div>
+            <% end %>
+            <div class="booking-description pl-2 mt-3">
+              <p class="p-strip">Vous avez habité chez <h4 class="h4-strip celestialblue"><%= booking.flat.user.first_name %></h4>
+                (séjour du <%= booking.arrival %> au <%= booking.departure %>)</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

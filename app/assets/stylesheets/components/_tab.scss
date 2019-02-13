@@ -10,3 +10,31 @@
 .dashboard-tab-element {
   margin: 20px 15px;
 }
+
+.hospitality-tab:focus {
+  outline: none;
+}
+
+.hospitality-tab {
+  border: 0;
+  background-color: transparent;
+  &:hover {
+    color: $celestial-blue;
+  }
+}
+
+.active {
+  display: block;
+}
+
+.inactive {
+  display: none;
+}
+
+.active-button {
+  text-decoration: underline;
+  color: $celestial-blue;
+}
+
+.inactive-button {
+}

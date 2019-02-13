@@ -1,0 +1,6 @@
+<% @bookingstocomment.each do |booking| %>
+  <%= link_to new_flat_review_path(booking.flat) do %>
+    <p class="p-strip my-2 glitter">N'oubliez pas de laisser un commentaire de remerciements à <strong class="paynesgray"><%= booking.flat.user.first_name %></strong> pour votre séjour!</p>
+  <% end %>
+<% end %>
+

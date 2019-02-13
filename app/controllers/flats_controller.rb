@@ -94,6 +94,8 @@ class FlatsController < ApplicationController
   end
 
   def update
+    @user = current_user
+
     if @flat.update(flat_params)
       redirect_to flat_path(@flat)
     else
@@ -101,7 +103,6 @@ class FlatsController < ApplicationController
     end
     authorize @flat
 
-    @user = current_user
   end
 
   private

@@ -12,6 +12,10 @@ class Booking < ApplicationRecord
   #   )
   # end
 
+  def booking_days
+    (departure - arrival).to_i
+  end
+
   private
 
   def departure_after_arrival

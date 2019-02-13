@@ -1,0 +1,22 @@
+<h1 class="yankeesblue mb-5">Hébergements</h1>
+<div class="row">
+  <% @userflats.each do |flat| %>
+    <div class="col-4 px-1 py-2">
+      <%= link_to flat_path(flat) do %>
+        <div class="card-book-dashboard">
+          <% if flat.photo.blank? %>
+            <p>Pas de photos</p>
+          <% else %>
+              <div class="booking-photo" style="background-image: url('<%= cl_image_path flat.photo %>')"></div>
+          <% end %>
+          <div class="booking-description pl-2 mt-3">
+            <p class="p-strip">Votre appartement : <h4 class="h4-strip celestialblue"><%= flat.address %>, <%= flat.zipcode %></h4></p>
+            <p>
+              <%= link_to "Modifier l'appartement", edit_flat_path(flat), class: "italic celestialblue-hover" %> / <%= link_to "Ajouter des photos", new_flat_photo_path(flat), class: "italic celestialblue-hover" %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

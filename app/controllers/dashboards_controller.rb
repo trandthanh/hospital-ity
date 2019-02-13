@@ -5,6 +5,9 @@ class DashboardsController < ApplicationController
     @userflats = Flat.where(user: current_user)
 
     @user = current_user
+
+    @total_days = counting_booking_days
+    @total_ppl_helped = Booking.joins(:flat).where(:flats => {:user => current_user}).group_by(&:user).count
   end
 
   def sejours
@@ -22,6 +25,18 @@ class DashboardsController < ApplicationController
   def profile
     authorize :dashboard, :profile?
     @user = current_user
+  end
+
+  private
+
+  def counting_booking_days
+    sum = 0
+    @user.flats.each do |flat|
+      flat.bookings.each do |booking|
+        sum += booking.booking_days
+      end
+    end
+    return sum
   end
 
 end

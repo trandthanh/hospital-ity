@@ -32,3 +32,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.celestialblue-hover {
+  &:hover {
+    color: $celestial-blue;
+  }
+}

@@ -1,44 +1,33 @@
 <div class="text-center margin-top-50 margin-bottom-50">
-  <h1 class="yankeesblue">Bonjour <%= @user.first_name %>,</h1>
-  <h1 class="yankeesblue">Vous avez hébergé X personnes.</h1>
+  <h1 class="yankeesblue"><%= @user.first_name.capitalize %>,</h1>
+  <h1 class="yankeesblue">vous avez hébergé <span class="celestialblue"><%= @total_ppl_helped %></span> personnes pendant  <span class="celestialblue"><%= @total_days %></span> jours.</h1>
   <h1 class="yankeesblue">Un grand merci !</h1>
 </div>
 
 <div class="dashboard-tab">
   <div class="dashboard-tab-element">
-    <h6 class="h6-strip">Vos réservations</h6>
+    <%= button_tag(type: 'button', class: 'hospitality-tab active-button') do %>
+      <h6 class="h6-strip">Les réservations</h6>
+    <% end %>
   </div>
 
   <div class="dashboard-tab-element">
-    <h6 class="h6-strip">Vos hébergements</h6>
+    <%= button_tag(type: 'button', class: 'hospitality-tab inactive-button') do %>
+      <h6 class="h6-strip">Vos hébergements</h6>
+    <% end %>
   </div>
 </div>
 
-<div class="dashboard-content">
-  <h1>Hébergements</h1>
-  <% @userflats.each do |f| %>
-    <div class="flat-card">
-      <%= link_to flat_path(f) do %>
-        <p><%= f.address %>, <%= f.zipcode %></p>
-      <% end %>
-      <%= link_to "Modifier l'appartement", edit_flat_path(f)  %>
-      <%= link_to "Ajouter des photos", new_flat_photo_path(f) %>
-    </div>
-  <% end %>
 
-  <hr>
 
-  <h1>Bookings</h1>
-  <% @userflats.each do |flat| %>
-    <div>
-      <%= flat.address %>
-      <% flat.bookings.each do |booking| %>
-        <p>Booking:</p>
-        <%= booking.user.first_name %>
-        <%= booking.arrival %>
-        <%= booking.departure %>
-      <% end %>
-      <hr>
-    </div>
-  <% end %>
+
+<div class="dashboard-content my-5">
+
+  <div class="sejours-container container-tab">
+    <%= render 'dashboards/hebergements/bookings' %>
+  </div>
+
+  <div class="sejours-container container-tab">
+    <%= render 'dashboards/hebergements/usersflats' %>
+  </div>
 </div>
