@@ -27,6 +27,11 @@ class DashboardsController < ApplicationController
     @user = current_user
   end
 
+  def public_profile
+    authorize :dashboard, :public_profile?
+    @user = User.find(params[:id])
+  end
+
   private
 
   def counting_booking_days

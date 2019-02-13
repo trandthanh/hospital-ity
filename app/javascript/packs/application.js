@@ -15,9 +15,9 @@ if (document.querySelector(".page")) {
   initShowMapbox();
 }
 
-if (document.querySelector(".inactive-button")) {
-  tabActivate();
-}
+// if (document.querySelector(".inactive-button")) {
+//   tabActivate();
+// }
 
 
 

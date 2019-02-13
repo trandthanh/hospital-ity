@@ -16,7 +16,7 @@
 <div class="search-flats-wrapper">
   <div class="flat-list-cards">
     <p class="padding-top-bottom-20 border-bottom margin-left-right-20 paleaqua">Le prix indiqué correspond au prix total par nuit.</p>
-    <h3 class="padding-top-50 margin-left-right-20 margin-bottom-20 paynesgray">Les <%= @availableflats.count %> logements disponibles</h3>
+    <h3 class="padding-top-50 margin-left-right-20 margin-bottom-20 paynesgray">Nous vous avons trouvé <%= pluralize @availableflats.count, "logement" %> : </h3>
 
     <% @availableflats.each do |flat| %>
       <%= link_to flat_path(flat) do  %>

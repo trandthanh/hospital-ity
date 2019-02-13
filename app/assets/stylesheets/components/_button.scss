@@ -20,6 +20,72 @@
   }
 }
 
+.large-button {
+  margin: 0px;
+  margin-top: 10px;
+  background-color: $baby-blue;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  p {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.medium-button-glitter {
+  margin: 0 100px;
+  margin-top: 10px;
+  background-color: $glitter;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  p {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+.large-button-glitter {
+  margin: 0px;
+  margin-top: 10px;
+  background-color: $glitter;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans";
+  p {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+  &:hover {
+    transition: background 0.25s ease,border 0.25s ease,color 0.25s ease;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
 .small-button {
   color: white;
   background-color: $baby-blue;

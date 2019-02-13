@@ -12,4 +12,7 @@ class DashboardPolicy < Struct.new(:user, :dashboard)
     true
   end
 
+  def public_profile?
+    true
+  end
 end

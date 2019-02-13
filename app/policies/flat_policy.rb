@@ -24,4 +24,9 @@ class FlatPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+
+  def toggle_available_status?
+    true
+  end
 end

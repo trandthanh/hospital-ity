@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show, :edit, :update]
+  before_action :set_flat, only: [:show, :edit, :update, :toggle_available_status]
   skip_before_action :authenticate_user!, only: [:show, :index, :search]
 
   def index
@@ -24,18 +24,19 @@ class FlatsController < ApplicationController
     @user = current_user
 
     if params[:query][:capacity].blank? && params[:query][:date].blank?
-      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+      @availableflats = Flat.where('availability = ?', true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
       authorize :flat, :search?
     elsif params[:query][:capacity].blank?
-      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+      @availableflats = Flat.where('availability = ?', true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
       authorize :flat, :search?
     elsif params[:query][:date].blank?
-      @availableflats = Flat.joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+      @availableflats = Flat.where('availability = ?', true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
       authorize :flat, :search?
     else
-      @availableflats = Flat.where('capacity >= ?', params[:query][:capacity]).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
+      @availableflats = Flat.where('capacity >= ? and availability = ?', params[:query][:capacity], true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
       authorize :flat, :search?
     end
+
 
 
     @hospital = Hospital.where(hospital_name: params[:query][:hospital])
@@ -105,10 +106,18 @@ class FlatsController < ApplicationController
 
   end
 
+  def toggle_available_status
+    authorize :flat, :toggle_available_status?
+    authorize @flat
+
+    @flat.toggle!(:availability)
+    redirect_to hebergements_path
+  end
+
   private
 
   def flat_params
-    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type, :description, :wifi, :washing, :bathroom, :parking)
+    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type, :description, :wifi, :washing, :bathroom, :parking, :availability)
   end
 
   def set_flat
