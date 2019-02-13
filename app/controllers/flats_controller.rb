@@ -53,6 +53,8 @@ class FlatsController < ApplicationController
   def new
     @flat = Flat.new
     authorize @flat
+
+    @user = current_user
   end
 
   def create

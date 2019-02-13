@@ -1,44 +1,45 @@
-<%= simple_form_for(@flat) do |f| %>
-  <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: 'form-control' %>
+<div class="container display-flex">
+  <div class="row">
+    <div class="hospitality-form">
+      <div class="form-login">
+        <h1 class="celestialblue">Je veux proposer mon appartement :</h1>
+        <%= simple_form_for(@flat) do |f| %>
+          <%= f.error_notification %>
+          <% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <div class="form-inputs">
+            <%= f. hidden_field :super_host, :value => true %>
+
+            <%= f.label :address %>
+            <%= f.text_field :address, class: 'form-control' %>
+
+            <%= f.label :zipcode %>
+            <%= f.text_field :zipcode, class: 'form-control' %>
+
+            <%= f.label :zipcode_district %>
+            <%= f.text_field :zipcode_district, class: 'form-control' %>
+
+            <%= f.label :capacity %>
+            <%= f.number_field :capacity, class: 'form-control' %>
+
+            <%= f.label :number_of_rooms %>
+            <%= f.number_field :number_of_rooms, class: 'form-control' %>
+
+            <%= f.label :price_per_day %>
+            <%= f.number_field :price_per_day, class: 'form-control' %>
+
+            <%= f.label :hospital_id %>
+            <%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name %>
+
+            <%= f.input :photo, input_html: { class: 'hidden'}, label_html: { class: 'upload-photo'}, label: '📷 Ajouter une photo' %>
+            <%= f.input :photo_cache, as: :hidden %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Je valide", class: "medium-button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :zipcode %>
-    <%= f.text_field :zipcode, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :zipcode_district %>
-    <%= f.text_field :zipcode_district, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :capacity %>
-    <%= f.number_field :capacity, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :number_of_rooms %>
-    <%= f.number_field :number_of_rooms, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :price_per_day %>
-    <%= f.number_field :price_per_day, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :hospital_id %>
-    <%= f.collection_select :hospital_id, Hospital.all, :id, :hospital_name %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-  </div>
-
-  <%= f.submit 'Proposer votre appartement', class: 'medium-button' %>
-<% end %>
-
+</div>

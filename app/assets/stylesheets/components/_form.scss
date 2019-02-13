@@ -1,5 +1,5 @@
 .form-login {
-  background: white;
+  background: $alice-blue;
   padding: 50px 50px;
   margin: 50px 0;
   border-radius: 3px;
@@ -25,4 +25,24 @@
 
 .row {
   justify-content: center;
+}
+
+.display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.upload-photo {
+  border: #d3d3d3 solid 1px;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  background: white;
+  border-radius: 2px;
+}
+
+.hidden {
+  visibility: hidden;
 }
