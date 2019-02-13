@@ -4,6 +4,7 @@ import { initMapbox, initShowMapbox } from '../plugins/init_mapbox';
 import "../plugins/flatpickr"
 import { toggleDateInputs } from '../plugins/flatpickr';
 import { priceUpdate } from '../plugins/priceupdate';
+import { tabActivate } from '../plugins/tab';
 
 initMapbox();
 
@@ -14,6 +15,9 @@ if (document.querySelector(".page")) {
   initShowMapbox();
 }
 
+if (document.querySelector(".inactive-button")) {
+  tabActivate();
+}
 
 
 

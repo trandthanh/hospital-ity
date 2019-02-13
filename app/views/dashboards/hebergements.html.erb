@@ -6,13 +6,13 @@
 
 <div class="dashboard-tab">
   <div class="dashboard-tab-element">
-    <%= button_tag(type: 'button', class: 'hospitality-tab active-button') do %>
+    <%= button_tag(type: 'button', class: 'hospitality-tab bookings-button-tab active-button') do %>
       <h6 class="h6-strip">Les réservations</h6>
     <% end %>
   </div>
 
   <div class="dashboard-tab-element">
-    <%= button_tag(type: 'button', class: 'hospitality-tab inactive-button') do %>
+    <%= button_tag(type: 'button', class: 'hospitality-tab flats-button-tab inactive-button') do %>
       <h6 class="h6-strip">Vos hébergements</h6>
     <% end %>
   </div>
@@ -23,11 +23,11 @@
 
 <div class="dashboard-content my-5">
 
-  <div class="sejours-container container-tab">
+  <div class="sejours-container container-tab bookings-tab active">
     <%= render 'dashboards/hebergements/bookings' %>
   </div>
 
-  <div class="sejours-container container-tab">
+  <div class="sejours-container container-tab flats-tab inactive">
     <%= render 'dashboards/hebergements/usersflats' %>
   </div>
 </div>
