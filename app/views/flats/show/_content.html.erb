@@ -11,10 +11,25 @@
   <%= render 'flats/show/content/districtmap' %>
 </div>
 <div class="show-reviews padding-top-100">
-  <h1 class="yankeesblue">Les commentaires</h1>
-  <% @reviews.each do |review| %>
-    <%= review.comment %>
-    <%= review.user.first_name %>
-  <% end %>
-
+  <h1 class="yankeesblue pb-5">Les commentaires</h1>
+  <div class="container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <div class="col-6">
+          <div class="card-flat-review p-2">
+            <div class="card-flat-review-top">
+              <%= cl_image_tag review.user.avatar, class: "avatar", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" }, radius: 10, width: 100, height: 100, crop: :thumb, gravity: :face %>
+              <div class="card-flat-review-text ml-3">
+                <h6 class="h6-strip"><%= review.user.first_name %></h6>
+                <p class="p-15px italic"><%= review.created_at %></p>
+              </div>
+            </div>
+            <div class="card-flat-review-bottom mt-3">
+              <p><%= review.comment %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

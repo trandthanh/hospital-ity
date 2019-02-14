@@ -2,7 +2,7 @@
   <h1 class="yankeesblue">Bonjour <%= @user.first_name %>,</h1>
 </div>
 
-<% unless @currentbookings.empty? %>
+<% unless @bookingstocomment.empty? %>
   <div class="notifications background-babyblue py-3 text-center">
     <%= render 'dashboards/sejours/notifscomments' %>
   </div>

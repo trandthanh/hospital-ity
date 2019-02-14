@@ -50,3 +50,12 @@
 .card-book-dashboard {
   width: 100%;
 }
+
+.card-flat-review {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-flat-review-top {
+  display: flex;
+}
