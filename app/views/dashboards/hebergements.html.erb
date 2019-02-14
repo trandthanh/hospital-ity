@@ -1,104 +1,20 @@
-<div class="text-center p-5 m-5">
-  <h1 class="yankeesblue"><%= @user.first_name.capitalize %>,</h1>
-  <h1 class="yankeesblue">vous avez hébergé <span class="celestialblue"><%= @total_ppl_helped %></span> personnes pendant  <span class="celestialblue"><%= @total_days %></span> jours.</h1>
-  <h1 class="yankeesblue">Un grand merci !</h1>
-</div>
+<%= render 'dashboards/hebergements/header' %>
 
-<!-- <div class="dashboard-tab">
-  <div class="dashboard-tab-element">
-    <%#= button_tag(type: 'button', class: 'hospitality-tab bookings-button-tab active-button') do %>
-      <h6 class="h6-strip">Les réservations</h6>
-    <%# end %>
-  </div>
-
-  <div class="dashboard-tab-element">
-    <%#= button_tag(type: 'button', class: 'hospitality-tab flats-button-tab inactive-button') do %>
-      <h6 class="h6-strip">Vos hébergements</h6>
-    <%# end %>
-  </div>
-</div> -->
-
-<div class="dashboard-content background-aliceblue mt-5 py-5">
-  <div class="sejours-container container-tab flats-tab">
-
-    <h1 class="yankeesblue mb-5">Hébergements & Réservations</h1>
-    <div class="row">
-      <% @userflats.each do |flat| %>
-        <div class="col-4 px-1 py-2 mt-5">
-          <%= link_to flat_path(flat) do %>
-            <div class="card-book-dashboard">
-              <% if flat.photo.blank? %>
-                <p>Pas de photos</p>
-              <% else %>
-                  <div class="booking-photo" style="background-image: url('<%= cl_image_path flat.photo %>')"></div>
-              <% end %>
-              <div class="booking-description pl-2 mt-3">
-                <p class="p-strip">Votre appartement (pour <span class="celestialblue"><%= flat.hospital.hospital_name %></span>) : <h4 class="h4-strip celestialblue"><%= flat.address %>, <%= flat.zipcode %></h4></p>
-                <p>
-                  <%= link_to "Modifier l'appartement", edit_flat_path(flat), class: "italic celestialblue-hover" %> / <%= link_to "Ajouter des photos", new_flat_photo_path(flat), class: "italic celestialblue-hover" %>
-                </p>
-                <p>
-                  <%= link_to "#{ flat.availability ? 'Disponible' : 'Indisponible' }", toggle_available_status_flat_path(flat), method: :patch, class: "btn mt-4 #{ flat.availability ? 'large-button' : 'large-button-glitter' }"  %>
-                </p>
-              </div>
-            </div>
-          <% end %>
-
-          <div class="my-5 display-flex">
-            <% if flat.bookings.empty? %>
-              <div class="display-flex my-5">
-                <p class="italic p-4">Pas d'invités pour l'instant</p>
-              </div>
-            <% else %>
-
-              <div class="mt-4 display-flex">
-                <% unless flat.bookings.select { |booking| booking.arrival < Date.today && Date.today < booking.departure }.empty? %>
-                  <h3 class="p-3">Vos invités du moment</h3>
-                  <% flat.bookings.select { |booking| booking.arrival < Date.today && Date.today < booking.departure }.each do |booking| %>
-                    <div class="display-flex text-center">
-                      <%= link_to public_profile_path(booking.user) do %>
-                        <%= cl_image_tag booking.user.avatar, class: "avatar", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" }, radius: 10, width: 100, height: 100, crop: :thumb, gravity: :face %>
-                        <p class="p-3 text-center"><%= booking.user.first_name %> qui a séjourné chez vous du <%= booking.arrival %> au <%= booking.departure %>.</p>
-                      <% end %>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-
-              <div class="mt-4 display-flex">
-                <% unless flat.bookings.select { |booking| booking.departure < Date.today }.empty? %>
-                  <h3 class="p-3">Vos invités déjà conquis</h3>
-                  <% flat.bookings.select { |booking| booking.departure < Date.today }.each do |booking| %>
-                    <div class="display-flex text-center">
-                      <%= link_to public_profile_path(booking.user) do %>
-                        <%= cl_image_tag booking.user.avatar, class: "avatar", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" }, radius: 10, width: 100, height: 100, crop: :thumb, gravity: :face %>
-                        <p class="p-3 text-center"><%= booking.user.first_name %> qui a séjourné chez vous du <%= booking.arrival %> au <%= booking.departure %>.</p>
-                      <% end %>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-
-
-              <div class="mt-4 display-flex">
-                <% unless flat.bookings.select { |booking| booking.departure < Date.today }.empty? %>
-                  <h3 class="p-3">Vos prochains invités</h3>
-                  <% flat.bookings.select { |booking| Date.today < booking.arrival }.each do |booking| %>
-                    <div class="display-flex text-center">
-                      <%= link_to public_profile_path(booking.user) do %>
-                        <%= cl_image_tag booking.user.avatar, class: "avatar", id: "dropdownMenuButton", data: { toggle:"dropdown" }, aria: { haspopup:"true", expanded: "false" }, radius: 10, width: 100, height: 100, crop: :thumb, gravity: :face %>
-                        <p class="p-3 text-center"><%= booking.user.first_name %> qui va séjourner chez vous du <%= booking.arrival %> au <%= booking.departure %>.</p>
-                      <% end %>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-
-            <% end %>
-          </div>
-
-        </div>
-      <% end %>
+<!-- TABS -->
+  <!-- <div class="dashboard-tab">
+    <div class="dashboard-tab-element">
+      <%#= button_tag(type: 'button', class: 'hospitality-tab bookings-button-tab active-button') do %>
+        <h6 class="h6-strip">Les réservations</h6>
+      <%# end %>
     </div>
-  </div>
-</div>
+
+    <div class="dashboard-tab-element">
+      <%#= button_tag(type: 'button', class: 'hospitality-tab flats-button-tab inactive-button') do %>
+        <h6 class="h6-strip">Vos hébergements</h6>
+      <%# end %>
+    </div>
+  </div> -->
+<!-- END TABS -->
+
+
+<%= render 'dashboards/hebergements/content' %>

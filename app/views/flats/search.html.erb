@@ -1,62 +1,7 @@
-<div class="search-filter">
-  <%= simple_form_for :query, url: search_path, method: 'get' do |f| %>
-    <div class="filter-search-inputs">
-      <%= f.hidden_field :hospital, value: params[:query][:hospital] %>
-          <% if params[:query][:date].blank? %>
-            <%= f.input :date, as: :string, label: false, placeholder: "Arrivée", input_html: {class: "datepicker"}, required: false %>
-          <% else %>
-            <%= f.input :date, as: :string, label: false, placeholder: "Arrivée", input_html: {class: "datepicker", :value => Date.parse(params[:query][:date])}, required: false %>
-          <% end %>
-          <%= f.input :capacity, as: :integer, label: false, placeholder: "Membres", required: false, :input_html => { :value => params[:query][:capacity] } %>
-        <%= f.button :submit, value: 'Filtrer', class: "small-button" %>
-    <% end %>
-    </div>
-</div>
+<%= render 'flats/search/filters' %>
 
 <div class="search-flats-wrapper">
-  <div class="flat-list-cards">
-    <p class="padding-top-bottom-20 border-bottom margin-left-right-20 paleaqua">Le prix indiqué correspond au prix total par nuit.</p>
-    <h3 class="padding-top-50 margin-left-right-20 margin-bottom-20 paynesgray">Nous vous avons trouvé <%= pluralize @availableflats.count, "logement" %> : </h3>
-
-    <% @availableflats.each do |flat| %>
-      <%= link_to flat_path(flat) do  %>
-        <div class="card-flat border-gray">
-          <% if flat.photo.blank? %>
-            <div class="card-flat-picture">
-            </div>
-          <% else %>
-            <div class="card-flat-picture" style="background-image: url('<%= cl_image_path flat.photo %>')">
-            </div>
-          <% end %>
-          <div class="card-flat-body padding-15">
-            <div class="card-flat-body-top">
-              <h6 class="paynesgray">LE CENTRE : <%= flat.hospital.hospital_name.upcase %></h6>
-              <h5>
-                <% if flat.flat_type.nil? %>
-                  Un logement
-                <% else %>
-                  Une <%= flat.flat_type.upcase %>
-                <% end %>
-                chez <%= flat.user.first_name %>
-              </h5>
-              <p class="paynesgray"><%= pluralize flat.capacity, "voyageur" %> / <%= pluralize flat.number_of_rooms, "chambre" %></p>
-            </div>
-            <div class="card-flat-body-bottom">
-              <h5 class="h5-strip"><%= flat.price_per_day %> € / jour</h5>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-    <% end %>
-
-  </div>
-  <div
-    id="map"
-    class="searchmap"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-
+  <%= render 'flats/search/content/flatslist' %>
+  <%= render 'flats/search/content/map' %>
 </div>
 

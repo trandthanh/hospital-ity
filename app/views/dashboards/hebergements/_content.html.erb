@@ -1,0 +1,18 @@
+<div class="dashboard-content background-aliceblue mt-5 py-5">
+  <div class="sejours-container container-tab flats-tab">
+
+    <h1 class="yankeesblue mb-5">Hébergements & Réservations</h1>
+    <div class="row">
+      <% @userflats.each do |flat| %>
+        <div class="col-4 px-1 py-2 mt-5">
+
+          <%= render 'dashboards/hebergements/content/flats' %>
+          <%= render 'dashboards/hebergements/content/beneficiaires' %>
+
+
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
