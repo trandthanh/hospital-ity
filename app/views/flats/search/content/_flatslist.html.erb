@@ -4,7 +4,7 @@
 
   <% @availableflats.each do |flat| %>
     <%= link_to flat_path(flat) do  %>
-      <div class="card-flat border-gray">
+      <div class="card-flat border-gray" data-flat-id="<%= flat.id %>">
         <% if flat.photo.blank? %>
           <div class="card-flat-picture">
           </div>
