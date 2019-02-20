@@ -30,7 +30,7 @@ class FlatsController < ApplicationController
       @availableflats = Flat.where('availability = ?', true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
       authorize :flat, :search?
     elsif params[:query][:date].blank?
-      @availableflats = Flat.where('availability = ?', true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
+      @availableflats = Flat.where('capacity >= ? and availability = ?', params[:query][:capacity], true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]})
       authorize :flat, :search?
     else
       @availableflats = Flat.where('capacity >= ? and availability = ?', params[:query][:capacity], true).joins(:hospital).where(:hospitals => {:hospital_name => params[:query][:hospital]}).select { |flat| flat.unavailable_dates.none? { |hash| hash[:from] <= Date.parse(params[:query][:date]) && hash[:to] >= Date.parse(params[:query][:date]) }}
