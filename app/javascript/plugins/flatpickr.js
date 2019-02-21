@@ -1,11 +1,8 @@
 import flatpickr from "flatpickr"
-import "flatpickr/dist/flatpickr.min.css"
+import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 
 
 flatpickr(".datepicker", {
-  dateFormat: 'Y-m-d',
-  altInput: true,
-  altFormat: 'd/m/Y',
 });
 
 
@@ -20,7 +17,7 @@ const toggleDateInputs = function() {
     flatpickr(arrivalInput, {
     enableTime: false,
     minDate: 'today',
-    dateFormat: 'd/m/Y',
+     dateFormat: 'Y-m-d',
     disable: unvailableDates,
     onChange: function(selectedDates, selectedDate) {
       if (selectedDate === '') {
@@ -35,7 +32,7 @@ const toggleDateInputs = function() {
     const departureCalendar =
       flatpickr(departureInput, {
         enableTime: false,
-        dateFormat: 'd/m/Y',
+         dateFormat: 'Y-m-d',
         disable: unvailableDates
       });
   }
