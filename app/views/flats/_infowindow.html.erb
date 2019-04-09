@@ -1,5 +1,16 @@
 <div class="info-window mapboxgl-popup">
   <div class="mapboxgl-popup-content">
-    <%= flat.address %>
+    <% if object.is_a?(Hospital) %>
+      <div class="mapboxgl-popup-content-card">
+        <h6 class="p-strip"><%= object.hospital_name %></h6>
+      </div>
+    <% else %>
+      <%= link_to flat_path(object) do  %>
+        <div class="mapboxgl-popup-content-card">
+          <div class="mapbox-popup-content-card-picture card-flat-picture margin-bottom-10" style="background-image: url('<%= cl_image_path object.photo %>')"></div>
+          <h6 class="h6-strip"><%= object.flat_type %> chez <%= object.user.first_name %></h6>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

@@ -46,7 +46,7 @@ class FlatsController < ApplicationController
       {
         lng: flat.longitude,
         lat: flat.latitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { flat: flat }),
+        infoWindow: render_to_string(partial: "infowindow", locals: { object: flat }),
         id: flat.id,
         image_url: flat.is_a?(Hospital) ? helpers.asset_url('placeholder.png') : helpers.asset_url('house.png')
       }
