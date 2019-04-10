@@ -6,14 +6,11 @@
     <h6 class="h6-strip">Ajouter un appartement</h6>
   <% end %>
 <% elsif current_user.hospital_admin == true %>
-  <%= link_to "#", class: "navbar-link" do %>
-    <h6 class="h6-strip">Ma communauté</h6>
-  <% end %>
-
   <% if policy(:unapproved_user).unapprovedlist? %>
-    <%= link_to 'Dashboard', unapproved_list_path %>
+    <%= link_to unapproved_list_path, class: "navbar-link" do %>
+      <h6 class="h6-strip">Ma communauté</h6>
+    <% end %>
   <% end %>
-
 <% else %>
   <%= link_to sejours_path, class: "navbar-link" do %>
     <h6 class="h6-strip">Mes séjours</h6>
