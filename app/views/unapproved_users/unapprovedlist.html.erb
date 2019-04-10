@@ -1,9 +1,51 @@
-<table>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %>
-      <td><%= user.approved %>
-      <!-- <td><%#= link_to "Edit", edit_unapproved_user_path(user) %> -->
-    </tr>
-  <% end %>
-</table>
+<div class="text-center margin-top-50 margin-bottom-50">
+  <h1 class="yankeesblue">Bonjour <%= @user.first_name %>, du Centre <%= @user.hospital.hospital_name %></h1>
+</div>
+
+<div class="dashboard-content background-aliceblue padding-y-50">
+  <div class="sejours-container">
+    <h1 class="yankeesblue mb-5">Vos bénéficiaires</h1>
+    <table>
+      <thead class="backgroundcolor-celestialblue">
+        <tr class="padding-left-20">
+          <th class=" padding-left-20 padding-right-50">Nom / Famille</th>
+          <th class="padding-right-50">Email</th>
+          <th class="padding-right-50">Statut</th>
+          <th class="padding-right-50"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @beneficiaries.each do |user| %>
+          <tr>
+            <td class=" padding-left-20 padding-right-50"><%= user.first_name %> / <%= user.family %></td>
+            <td class="padding-right-50"><%= user.email %></td>
+            <td class="padding-right-50">
+              <% if user.approved == true %>
+                <div class="backgroundcolor-aeroblue">
+                  <p class="p-strip textalign-center color-spanishgreen padding-x-20">Accepté</p>
+                </div>
+              <% else %>
+                <div class="backgroundcolor-moccasin">
+                  <p class="p-strip textalign-center color-ruddybrown padding-x-20">En attente</p>
+                </div>
+              <% end %>
+            </td>
+            <td class="padding-right-50"><%= link_to "Modifier", root_path %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sejours-container">
+    <h1 class="yankeesblue mb-5">Vos codes</h1>
+
+  </div>
+
+  <div class="sejours-container">
+    <h1 class="yankeesblue mb-5">Vos hôtes</h1>
+
+  </div>
+
+</div>
+

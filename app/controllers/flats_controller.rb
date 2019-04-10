@@ -119,7 +119,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type, :description, :wifi, :washing, :bathroom, :parking, :availability)
+    params.require(:flat).permit(:address, :zipcode, :zipcode_district, :capacity, :number_of_rooms, :price_per_day, :hospital_id, :photo, :flat_type, :description, :wifi, :washing, :bathroom, :parking, :availability, :verified)
   end
 
   def set_flat

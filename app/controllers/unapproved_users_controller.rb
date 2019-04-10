@@ -5,13 +5,7 @@ class UnapprovedUsersController < ApplicationController
 
     @user = current_user
 
-    if params[:approved] == "false"
-      @users = User.where(approved: false, hospital_id: current_user.hospital_id)
-      # @users = policy_scope(User).where(approved: false)
-    else
-      @users = User.where(hospital_id: current_user.hospital_id)
-      # @users = policy_scope(User)
-    end
+    @beneficiaries = User.where(super_admin: false, hospital_admin: false, super_host: false)
   end
 
   # def edit
