@@ -58,7 +58,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
 
     elsif params[:user][:super_host].nil? && Code.all.map { |x| x.code }.include?(params[:other][:code])
-      resource.save
+
+      # Note: Link Code to User
+
+      @code = Code.find_by(code: params[:other][:code])
+
+      if @code.user.nil?
+        resource.save
+        @code.user = @user
+      end
+
+
       yield resource if block_given?
       if resource.persisted?
         if resource.active_for_authentication?
@@ -73,7 +83,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       else
         clean_up_passwords resource
         set_minimum_password_length
-        respond_with resource
+        redirect_to root_path, :notice => "Contactez l'hopital ou notre service"
+        # respond_with resource
       end
 
 

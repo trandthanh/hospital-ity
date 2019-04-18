@@ -1,5 +1,7 @@
 class Code < ApplicationRecord
-  # has_one :user
+
+  # Note: Linking Code to User
+  has_one :user
 
   belongs_to :hospital
 

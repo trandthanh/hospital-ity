@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_093606) do
+ActiveRecord::Schema.define(version: 2019_04_18_125600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,7 +119,9 @@ ActiveRecord::Schema.define(version: 2019_02_08_093606) do
     t.boolean "super_host", default: false, null: false
     t.boolean "approved", default: false, null: false
     t.string "avatar"
+    t.bigint "code_id"
     t.index ["approved"], name: "index_users_on_approved"
+    t.index ["code_id"], name: "index_users_on_code_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hospital_id"], name: "index_users_on_hospital_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -135,5 +137,6 @@ ActiveRecord::Schema.define(version: 2019_02_08_093606) do
   add_foreign_key "photos", "flats"
   add_foreign_key "reviews", "flats"
   add_foreign_key "reviews", "users"
+  add_foreign_key "users", "codes"
   add_foreign_key "users", "hospitals"
 end
