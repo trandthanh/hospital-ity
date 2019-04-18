@@ -1,0 +1,24 @@
+<div class="container display-flex">
+  <div class="row">
+    <div class="hospitality-form">
+      <div class="form-login">
+        <h1 class="celestialblue">Je crée un code :</h1>
+        <%= simple_form_for [@hospital, @code] do |f| %>
+          <%= f.error_notification %>
+          <% @code.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+          <div class="form-inputs">
+
+            <%= f.label :code %>
+            <%= f.text_field :code, class: 'form-control' %>
+
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Je valide", class: "medium-button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

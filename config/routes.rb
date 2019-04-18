@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/create'
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   get '/community', to: 'unapproved_users#unapprovedlist', as: :community
@@ -19,6 +18,18 @@ Rails.application.routes.draw do
       patch :toggle_available_status
     end
   end
+
+  resources :unapproved_users do
+    member do
+      patch :activate_user_account
+    end
+  end
+
+  resources :hospitals do
+    resources :codes, only: [:new, :create]
+  end
+
+  resources :codes, only: [:destroy]
 
   root to: 'pages#home'
 end

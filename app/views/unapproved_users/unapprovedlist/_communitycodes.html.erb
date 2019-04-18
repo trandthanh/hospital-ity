@@ -1,4 +1,12 @@
-<h1 class="yankeesblue mb-5">Vos codes</h1>
+<span>
+  <div class="yankeesblue mb-5">
+    <h1>Vos codes</h1>
+    <%= link_to new_hospital_code_path(@hospital) do %>
+      <h3>(+ Un nouveau code)</h3>
+    <% end %>
+  </div>
+</span>
+
 <table>
   <thead class="backgroundcolor-celestialblue">
     <tr class="padding-left-20">
@@ -24,7 +32,7 @@
             </div>
           <% end %>
         </td>
-        <td class="padding-right-50"><%= link_to "Supprimer", root_path %></td>
+        <td class="padding-right-50"><%= link_to "Supprimer", code_path(code), method: :delete, data: { confirm: "Confirmer ?"} %></td>
       </tr>
     <% end %>
   </tbody>

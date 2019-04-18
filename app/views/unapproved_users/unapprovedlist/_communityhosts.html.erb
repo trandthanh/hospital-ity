@@ -18,14 +18,18 @@
             <div class="backgroundcolor-aeroblue">
               <p class="p-strip textalign-center color-spanishgreen padding-x-20">Accepté</p>
             </div>
-          <% else %>
-            <div class="backgroundcolor-moccasin">
-              <p class="p-strip textalign-center color-ruddybrown padding-x-20">En attente</p>
-            </div>
           <% end %>
         </td>
-        <td class="padding-right-50"><%= link_to "Modifier", root_path %></td>
+        <td class="padding-right-50">
+          <% unless user.approved %>
+            <%= link_to activate_user_account_unapproved_user_path(user), method: :patch do  %>
+              <p class="p-strip textalign-center color-ruddybrown padding-x-20">Approuver</p>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+

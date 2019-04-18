@@ -5,6 +5,10 @@ class UnapprovedUserPolicy < ApplicationPolicy
     true if user.hospital_admin?
   end
 
+  def activate_user_account?
+    true if user.hospital_admin?
+  end
+
 
   class Scope < Scope
     def resolve
