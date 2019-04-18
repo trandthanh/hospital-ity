@@ -9,7 +9,8 @@ class User < ApplicationRecord
   belongs_to :hospital
 
 
-  # belongs_to :code, optional: true
+  # Note: Linking Code to User
+  belongs_to :code, optional: true
 
 
   has_many :flats

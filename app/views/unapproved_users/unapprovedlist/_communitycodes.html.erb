@@ -13,7 +13,17 @@
       <tr>
         <td class=" padding-left-20 padding-right-50"><%= code.code %></td>
         <td class="padding-right-50"><%= code.updated_at %></td>
-        <td class="padding-right-50">A modifier</td>
+        <td class="padding-right-50">
+          <% if code.user.nil? %>
+            <div class="backgroundcolor-moccasin">
+              <p class="p-strip textalign-center color-ruddybrown padding-x-20">Pas d'entrée</p>
+            </div>
+          <% else %>
+            <div class="backgroundcolor-aeroblue">
+              <p class="p-strip textalign-center color-spanishgreen padding-x-20"><%= code.user.email %></p>
+            </div>
+          <% end %>
+        </td>
         <td class="padding-right-50"><%= link_to "Supprimer", root_path %></td>
       </tr>
     <% end %>
