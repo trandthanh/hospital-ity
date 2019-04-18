@@ -1,0 +1,21 @@
+<h1 class="yankeesblue mb-5">Vos codes</h1>
+<table>
+  <thead class="backgroundcolor-celestialblue">
+    <tr class="padding-left-20">
+      <th class=" padding-left-20 padding-right-50">Code</th>
+      <th class="padding-right-50">Date de Création</th>
+      <th class="padding-right-50">Statut</th>
+      <th class="padding-right-50"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @codes.each do |code| %>
+      <tr>
+        <td class=" padding-left-20 padding-right-50"><%= code.code %></td>
+        <td class="padding-right-50"><%= code.updated_at %></td>
+        <td class="padding-right-50">A modifier</td>
+        <td class="padding-right-50"><%= link_to "Supprimer", root_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

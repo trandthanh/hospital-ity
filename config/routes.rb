@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'bookings/create'
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  get '/unapproved_list', to: 'unapproved_users#unapprovedlist'
+  get '/community', to: 'unapproved_users#unapprovedlist', as: :community
   get '/hebergements', to: 'dashboards#hebergements'
   get '/sejours', to: 'dashboards#sejours'
   get '/profile', to: 'dashboards#profile'
