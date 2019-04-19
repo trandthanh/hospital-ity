@@ -1,8 +1,10 @@
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
+import { French } from 'flatpickr/dist/l10n/fr.js';
 
 
 flatpickr(".datepicker", {
+  locale: "fr"
 });
 
 
@@ -15,6 +17,7 @@ const toggleDateInputs = function() {
     const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 
     flatpickr(arrivalInput, {
+    locale: "fr",
     enableTime: false,
     minDate: 'today',
      dateFormat: 'Y-m-d',
@@ -31,8 +34,9 @@ const toggleDateInputs = function() {
   });
     const departureCalendar =
       flatpickr(departureInput, {
+        locale: "fr",
         enableTime: false,
-         dateFormat: 'Y-m-d',
+        dateFormat: 'Y-m-d',
         disable: unvailableDates
       });
   }

@@ -25,8 +25,8 @@
               <h5>Votre logement coûte <span class="celestialblue"><%= @flat.price_per_day %>€ / nuit</span>.</h5>
               <hr>
               <%= simple_form_for ([@flat, @booking]) do |f| %>
-                <%= f.input :arrival, as: :string, label: "Dates", placeholder: "From", required: false %>
-                <%= f.input :departure, as: :string, label: '&nbsp;'.html_safe, placeholder: "To", disabled: true, required: false %>
+                <%= f.input :arrival, as: :string, label: "Dates", placeholder: "Arrivée", required: false %>
+                <%= f.input :departure, as: :string, label: '&nbsp;'.html_safe, placeholder: "Départ", disabled: true, required: false %>
                 <hr>
                 <h5>Le coût total de votre séjour : <span class="celestialblue total-price">0€</span>.</h5>
                 <div class="booking-button-box margin-top-40 margin-bottom-80">

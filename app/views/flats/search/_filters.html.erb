@@ -8,7 +8,7 @@
             <%= f.input :date, as: :string, label: false, placeholder: "Arrivée", input_html: {class: "datepicker", :value => Date.parse(params[:query][:date])}, required: false %>
           <% end %>
           <%= f.input :capacity, as: :integer, label: false, placeholder: "Membres", required: false, :input_html => { :value => params[:query][:capacity] } %>
-        <%= f.button :submit, value: 'Filtrer', class: "small-button" %>
+        <%= f.button :submit, value: 'Filtrer', class: "small-button", data: { disable_with: false } %>
     <% end %>
     </div>
 </div>
